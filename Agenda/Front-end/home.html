@@ -23,8 +23,10 @@
 		<button id="schedule-an-event-button"
 			class="primary-button"
 			>Schedule an event</button>
-		<!-- <form id="schedule-an-event-form"> -->
-		<div id="schedule-an-event-form">
+		<form id="schedule-an-event-form"
+		      method="post"
+		      enctype="application/x-www-form-urlencoded"
+		      action="">
 			<h2>New event</h2>
 			<div>
 				<label for="schedule-form-name-input">Name</label>
@@ -54,14 +56,13 @@
 			<div>
 				<button id="confirm-schedule-an-event-button"
 					class="primary-button"
-					onclick = "addEvent()"
+					type="submit"
 					>Schedule event</button>
 				<button id="cancel-schedule-an-event-button"
 					class="secondary-button"
 					>Cancel scheduling</button>
 			</div>
-		<!-- </form> -->
-		</div>
+		</form>
 		<section id="invites-section"
 			aria-labelledby="invites-header">
 			<h2 id="invites-header">Invites</h2>
