@@ -5,39 +5,105 @@
 		<link rel="stylesheet" href="home.css">
 	</head>
 	<body>
-		<h1>Agenda</h1>
-		<section>
-			<h2>Happening right now</h2>
-			<div aria-label="Event">
+		<h1 id="title-header">Agenda</h1>
+		<!-- <section id="happening-right-now-section"
+			aria-labelledby="happening-right-now-header">
+			<h2 id="happening-right-now-header">Happening right now</h2>
+			<div class="event-all-details" aria-label="Event">
 				<h3>Meeting</h3>
 				<p>Started 5 minutes ago.</p>
 				<p>Happening at meeting room 5.</p>
 				<p>Expected to end 10:30AM.<p>
 				<p>Anna, Brian, Carl, and 5 others accepted the invites.</p>
-				<button>Reschedule</button>
-				<button>Cancel</button>
+				<button class="primary-button">Hide this notification</button>
+				<button class="secondary-button">Reschedule event</button>
+				<button class="secondary-button">Cancel event</button>
 			</div>
-		</section>
-		<button>Schedule an event</button>
-		<section>
-			<h2>Invites</h2>
-			<div aria-label="Invite to an event">
-				<p>Daniel Doe has invited you to</p>
-				<h3>Party</h3>
-				<p>Friday at 10:30PM.</p>
-				<p>At Daniel's house.</p>
-				<p>Emily, Fred, Grant, and 15 others have received an invited.</p>
-				<button>Accept</button>
-				<button>Ask for a reschedule</button>
-				<button>Decline and notify Daniel</button>
-				<button>Decline without notifying Daniel</button>
+		</section> -->
+		<button id="schedule-an-event-button"
+			class="primary-button"
+			>Schedule an event</button>
+		<!-- <form id="schedule-an-event-form"> -->
+		<div id="schedule-an-event-form">
+			<h2>New event</h2>
+			<div>
+				<label for="schedule-form-name-input">Name</label>
+				<input id="schedule-form-name-input"
+					name="new-event-name"
+					type="text"></input>
 			</div>
+			<div>
+				<label for="schedule-form-date-input">Date</label>
+				<input id="schedule-form-date-input"
+					name="new-event-date"
+					type="date"></input>
+			</div>
+			<div>
+				<label for="schedule-form-time-input">Time</label>
+				<input id="schedule-form-time-input"
+					name="new-event-time"
+					type="time"></input>
+			</div>
+			<div>
+				<label for="schedule-form-place-input">Place</label>
+				<input id="schedule-form-place-input"
+					name="new-event-place"
+					type="text"></input>
+			</div>
+			<button>Invite people</button>
+			<div>
+				<button id="confirm-schedule-an-event-button"
+					class="primary-button"
+					onclick = "addEvent()"
+					>Schedule event</button>
+				<button id="cancel-schedule-an-event-button"
+					class="secondary-button"
+					>Cancel scheduling</button>
+			</div>
+		<!-- </form> -->
+		</div>
+		<section id="invites-section"
+			aria-labelledby="invites-header">
+			<h2 id="invites-header">Invites</h2>
+			<!-- <ul>
+				<li class="invite-to-event-all-details"
+					aria-label="Invite to an event">
+					<p>Daniel Doe has invited you to</p>
+					<h3>Party</h3>
+					<p>Friday at 10:30PM.</p>
+					<p>At Daniel's house.</p>
+					<p>Emily, Fred, Grant, and 15 others have received an invite.</p>
+					<button class="primary-button">Accept</button>
+					<button class="secondary-button">Ask for a reschedule</button>
+					<button class="secondary-button">Decline</button>
+				</li>
+			</ul> -->
+			<p>No pending invites.</p>
 		</section>
 		<section>
 			<h2>Happening soon</h2>
+			<ul id="events-happening-soon">
+				<li class="event-key-details"
+					aria-label="Event">
+					<h3>Event name</h3>
+					<p>Tomorrow, at 0:00AM.</p>
+				</li>
+				<li class="event-key-details"
+					aria-label="Event">
+					<h3>Event name</h3>
+					<p>Weekday, at 0:00AM.</p>
+				</li>
+			</ul>
 		</section>
 		<section>
 			<h2>Happening later</h2>
+			<ul id="events-happening-later">
+				<li class="event-key-details"
+					aria-label="Event">
+					<h3>Event name</h3>
+					<p>Weekday, 0 month, at 0:00AM.</p>
+				</li>
+			</ul>
 		</section>
 	</body>
 	<script src="home.js"></script>
