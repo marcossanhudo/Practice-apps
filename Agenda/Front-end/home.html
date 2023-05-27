@@ -20,91 +20,75 @@
 				<button class="secondary-button">Cancel event</button>
 			</div>
 		</section> -->
-		<button id="schedule-an-event-button"
-			class="primary-button"
-			>Schedule an event</button>
-		<form id="schedule-an-event-form"
-		      method="post"
-		      enctype="application/x-www-form-urlencoded"
-		      action="">
-			<h2>New event</h2>
-			<div>
-				<label for="schedule-form-name-input">Name</label>
-				<input id="schedule-form-name-input"
-					name="new-event-name"
-					type="text"></input>
-			</div>
-			<div>
-				<label for="schedule-form-date-input">Date</label>
-				<input id="schedule-form-date-input"
-					name="new-event-date"
-					type="date"></input>
-			</div>
-			<div>
-				<label for="schedule-form-time-input">Time</label>
-				<input id="schedule-form-time-input"
-					name="new-event-time"
-					type="time"></input>
-			</div>
-			<div>
-				<label for="schedule-form-place-input">Place</label>
-				<input id="schedule-form-place-input"
-					name="new-event-place"
-					type="text"></input>
-			</div>
-			<button>Invite people</button>
-			<div>
-				<button id="confirm-schedule-an-event-button"
-					class="primary-button"
-					type="submit"
-					>Schedule event</button>
-				<button id="cancel-schedule-an-event-button"
-					class="secondary-button"
-					>Cancel scheduling</button>
-			</div>
-		</form>
+		<section id="main-actions">
+			<button id="schedule-an-event-button"
+				class="primary-button"
+				>Schedule an event</button>
+			<form id="schedule-an-event-form"
+			      method="post"
+			      enctype="application/x-www-form-urlencoded"
+			      action="">
+				<h2>New event</h2>
+				<div class="label-and-input">
+					<label for="schedule-form-name-input">Name</label>
+					<input id="schedule-form-name-input"
+						name="name"
+						type="text"></input>
+				</div>
+				<div class="label-and-input">
+					<label for="schedule-form-date-input">Date</label>
+					<input id="schedule-form-date-input"
+						name="date"
+						type="date"></input>
+				</div>
+				<div class="label-and-input">
+					<label for="schedule-form-time-input">Time</label>
+					<input id="schedule-form-time-input"
+						name="time"
+						type="time"></input>
+				</div>
+				<div class="label-and-input">
+					<label for="schedule-form-place-input">Place</label>
+					<input id="schedule-form-place-input"
+						name="place"
+						type="text"></input>
+				</div>
+				<div>
+					<button id="invite-people-button"
+						class="primary-button"
+						>Invite people</button>
+				</div>
+				<div>
+					<button id="schedule-form-schedule-event-button"
+						class="primary-button"
+						type="submit"
+						>Schedule event</button>
+					<button id="schedule-form-cancel-scheduling-button"
+						class="secondary-button"
+						>Cancel scheduling</button>
+				</div>
+			</form>
+		</section>
 		<section id="invites-section"
 			aria-labelledby="invites-header">
 			<h2 id="invites-header">Invites</h2>
-			<!-- <ul>
-				<li class="invite-to-event-all-details"
-					aria-label="Invite to an event">
-					<p>Daniel Doe has invited you to</p>
-					<h3>Party</h3>
-					<p>Friday at 10:30PM.</p>
-					<p>At Daniel's house.</p>
-					<p>Emily, Fred, Grant, and 15 others have received an invite.</p>
-					<button class="primary-button">Accept</button>
-					<button class="secondary-button">Ask for a reschedule</button>
-					<button class="secondary-button">Decline</button>
-				</li>
-			</ul> -->
-			<p>No pending invites.</p>
+			<ol id="invites">
+			</ol>
+			<p id="no-invite-paragraph">No pending invites.</p>
 		</section>
-		<section>
-			<h2>Happening soon</h2>
-			<ul id="events-happening-soon">
-				<li class="event-key-details"
-					aria-label="Event">
-					<h3>Event name</h3>
-					<p>Tomorrow, at 0:00AM.</p>
-				</li>
-				<li class="event-key-details"
-					aria-label="Event">
-					<h3>Event name</h3>
-					<p>Weekday, at 0:00AM.</p>
-				</li>
-			</ul>
+		<section id="happening-soon-section"
+			aria-labelledby="happening-soon-header">
+			<h2 id="happening-soon-header">Happening soon</h2>
+			<ol id="events-happening-soon">
+			</ol>
+			<p id="no-events-happening-soon-paragraph">No events.</p>
 		</section>
-		<section>
-			<h2>Happening later</h2>
-			<ul id="events-happening-later">
-				<li class="event-key-details"
-					aria-label="Event">
-					<h3>Event name</h3>
-					<p>Weekday, 0 month, at 0:00AM.</p>
-				</li>
-			</ul>
+		<section id="happening-later-section"
+			aria-labelledby="happening-later-header">
+			<h2 id="happening-later-header">Happening later</h2>
+			<ol id="events-happening-later">
+			</ol>
+			<p id="no-events-happening-later-paragraph">No events.</p>
 		</section>
 	</body>
 	<script src="home.js"></script>
