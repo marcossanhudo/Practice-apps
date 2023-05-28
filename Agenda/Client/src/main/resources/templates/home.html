@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en-US">
+	<head>
+		<title>Your agenda</title>
+		<link rel="stylesheet" href="home.css">
+	</head>
+	<body>
+		<h1 id="title-header">Agenda</h1>
+		<!-- <section id="happening-right-now-section"
+			aria-labelledby="happening-right-now-header">
+			<h2 id="happening-right-now-header">Happening right now</h2>
+			<div class="event-all-details" aria-label="Event">
+				<h3>Meeting</h3>
+				<p>Started 5 minutes ago.</p>
+				<p>Happening at meeting room 5.</p>
+				<p>Expected to end 10:30AM.<p>
+				<p>Anna, Brian, Carl, and 5 others accepted the invites.</p>
+				<button class="primary-button">Hide this notification</button>
+				<button class="secondary-button">Reschedule event</button>
+				<button class="secondary-button">Cancel event</button>
+			</div>
+		</section> -->
+		<section id="main-actions">
+			<button id="schedule-an-event-button"
+				class="primary-button"
+				>Schedule an event</button>
+			<form id="schedule-an-event-form"
+			      method="post"
+			      enctype="application/x-www-form-urlencoded"
+			      action="localhost:8000/schedule-event">
+				<h2>New event</h2>
+				<div class="label-and-input">
+					<label for="schedule-form-name-input">Name</label>
+					<input id="schedule-form-name-input"
+						name="name"
+						type="text"></input>
+				</div>
+				<div class="label-and-input">
+					<label for="schedule-form-date-input">Date</label>
+					<input id="schedule-form-date-input"
+						name="date"
+						type="date"></input>
+				</div>
+				<div class="label-and-input">
+					<label for="schedule-form-time-input">Time</label>
+					<input id="schedule-form-time-input"
+						name="time"
+						type="time"></input>
+				</div>
+				<div class="label-and-input">
+					<label for="schedule-form-place-input">Place</label>
+					<input id="schedule-form-place-input"
+						name="place"
+						type="text"></input>
+				</div>
+				<div>
+					<button id="invite-people-button"
+						class="primary-button"
+						>Invite people</button>
+				</div>
+				<div>
+					<button id="schedule-form-schedule-event-button"
+						class="primary-button"
+						type="submit"
+						>Schedule event</button>
+					<button id="schedule-form-cancel-scheduling-button"
+						class="secondary-button"
+						>Cancel scheduling</button>
+				</div>
+			</form>
+		</section>
+		<section id="invites-section"
+			aria-labelledby="invites-header">
+			<h2 id="invites-header">Invites</h2>
+			<ol id="invites">
+			</ol>
+			<p id="no-invite-paragraph">No pending invites.</p>
+		</section>
+		<section id="happening-soon-section"
+			aria-labelledby="happening-soon-header">
+			<h2 id="happening-soon-header">Happening soon</h2>
+			<ol id="events-happening-soon">
+			</ol>
+			<p id="no-events-happening-soon-paragraph">No events.</p>
+		</section>
+		<section id="happening-later-section"
+			aria-labelledby="happening-later-header">
+			<h2 id="happening-later-header">Happening later</h2>
+			<ol id="events-happening-later">
+			</ol>
+			<p id="no-events-happening-later-paragraph">No events.</p>
+		</section>
+	</body>
+	<script src="home.js"></script>
+</html>
