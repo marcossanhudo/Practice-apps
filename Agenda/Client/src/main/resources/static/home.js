@@ -62,13 +62,15 @@ function renderEventKeyDetailListing(event) {
 	newEvent.ariaLabel = "Event";
 
 	newEventName = document.createElement("h3");
+	newEventName.className = "event-name-header";
 	newEventName.innerHTML = event.name;
 	newEvent.appendChild(newEventName);
 
-	newEventName = document.createElement("p");
+	newEventDateTime = document.createElement("p");
+	newEventDateTime.className = "event-datetime-paragraph";
 	const dateTime = new Date(event.date + "T" + event.time);
-	newEventName.innerHTML = getRelativeName(dateTime) + ", at " + getFriendlyTimeHHMM(dateTime) + ".";
-	newEvent.appendChild(newEventName);
+	newEventDateTime.innerHTML = getRelativeName(dateTime) + ", at " + getFriendlyTimeHHMM(dateTime) + ".";
+	newEvent.appendChild(newEventDateTime);
 
 	if (dateTime.getTime() - today.getTime() < (1000 * 60 * 60 * 24 * 7)) {
 		getById("no-events-happening-soon-paragraph").style.display = "none";
