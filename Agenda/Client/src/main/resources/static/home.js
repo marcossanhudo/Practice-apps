@@ -1,6 +1,7 @@
 enableScheduleAnEventForm(false);
 getById("schedule-an-event-button").onclick = () => { enableScheduleAnEventForm(true); }
 getById("schedule-form-cancel-scheduling-button").onclick = () => { enableScheduleAnEventForm(false); }
+getById("schedule-form-schedule-event-button").onclick = () => { enableScheduleAnEventForm(false); }
 //populateAgenda();
 //simulateInvite();
 
@@ -8,12 +9,12 @@ function enableScheduleAnEventForm(enable) {
 	switch (enable) {
 		case false:
 			getById("schedule-an-event-button").style.display = "block";
-			getById("schedule-an-event-form").reset();
 			getById("schedule-an-event-form").style.display = "none";
 			break;
 		default:
 		case true:
 			getById("schedule-an-event-button").style.display = "none";
+			getById("schedule-an-event-form").reset();
 			getById("schedule-an-event-form").style.display = "block";
 			break;
 	}
