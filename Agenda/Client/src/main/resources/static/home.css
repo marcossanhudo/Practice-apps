@@ -1,11 +1,17 @@
 :root {
-	background-color: #303030;
+	--accent-color: #511eff;
+	--accent-color-half-opacity: #511eff55;
+	--light-primary: #fefefe;
+	--dark-primary: #0e0e0e;
+	--dark-background-secondary: #303030;
+	--dark-background-primary: #202020;
+	background-color: var(--dark-background-secondary);
 	padding: 0em calc(50vw - 40ch);
 }
 
 :root * {
 	font-family: SF Pro, Segoe UI, Roboto, Arial;
-	color: #fefefe;
+	color: var(--light-primary);
 	max-width: calc(80ch + 1.5em);
 }
 
@@ -47,7 +53,7 @@ button:hover {
 
 button:hover,
 input:hover {
-	box-shadow: 0px 0px 4px 4px #7000ff55;
+	box-shadow: 0px 0px 4px 4px var(--accent-color-half-opacity);
 }
 
 .primary-button,
@@ -57,7 +63,7 @@ input:hover {
 	font-size: 1em;
 	font-weight: 600;
 	border-radius: 8px;
-	border: 2px solid #7000ff;
+	border: 2px solid var(--accent-color);
 }
 
 button {
@@ -66,17 +72,17 @@ button {
 }
 
 .primary-button {
-	background-color: #7000ff;
+	background-color: var(--accent-color);
 }
 
 .secondary-button {
-	background-color: #7000ff00;
+	background-color: transparent;
 }
 
 #schedule-an-event-form {
 	border-radius: 8px;
 	padding: 1.5em;
-	background-color: #202020;
+	background-color: var(--dark-background-primary);
 	margin-bottom: 1em;
 }
 
@@ -90,7 +96,7 @@ button {
 
 #schedule-an-event-form input {
 	width: 30ch;
-	background-color: #20202000;
+	background-color: transparent;
 }
 
 .event-all-details,
@@ -98,7 +104,7 @@ button {
 	list-style-type: none;
 	border-radius: 8px;
 	padding: 1.5em;
-	background-color: #202020;
+	background-color: var(--dark-background-primary);
 	margin-bottom: 1em;
 }
 
@@ -110,5 +116,5 @@ button {
 
 .event-all-details:hover,
 .event-key-details:hover {
-	//box-shadow: 0px 0px 4px 4px #7000ff;
+	//box-shadow: 0px 0px 4px 4px var(--accent-color);
 }
