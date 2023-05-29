@@ -1,19 +1,9 @@
-package com.agenda.client.Domain;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Column;
-
-@Entity
 public class User {
-	
-	@Id
-	private Long id;
 
-	@Column(name = "name")
+	private Long id;
 	private String name;
 
-	public User(Long id) {
+	public User(int id) {
 		this.id = id;
 	}
 

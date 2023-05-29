@@ -1,43 +1,18 @@
-package com.agenda.client.Domain;
-
-import java.time.LocalDate;
-import java.time.LocalTime;
+import java.util.LocalDate;
+import java.util.LocalTime;
 import java.util.ArrayList;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Column;
 
-@Entity
 public class Event {
 
-	@Id
 	private Long id;
-
-	@Column(name = "name")
 	private String name;
-
-	@Column(name = "description")
 	private String description;
-
-	@Column(name = "date")
 	private LocalDate date;
-
-	@Column(name = "time")
 	private LocalTime time;
-
-	@Column(name = "place")
 	private String place;
-
-	@Column(name = "creatorId")
 	private Long creatorId;
-
-	@Column(name = "idsOfInvitees")
-	private ArrayList<Long> idsOfInvitees;
-
-	@Column(name = "idsOfInviteesWhoAccepted")
-	private ArrayList<Long> idsOfInviteesWhoAccepted;
-
-	public Event() {}
+	private ArrayList<Long> idsOfinvitees;
+	privates ArrayList<Long> idsOfInviteesWhoAccepted;
 
 	public Event(Long id) {
 		this.id = id;
@@ -78,7 +53,7 @@ public class Event {
 		return this.time;
 	}
 
-	public Event time(LocalTime time) {
+	public Event name(LocalTime time) {
 		this.time = time;
 		return this;
 	}
@@ -106,7 +81,7 @@ public class Event {
 	}
 
 	public Event idsOfInvitees(ArrayList<Long> idsOfInvitees) {
-		this.idsOfInvitees = idsOfInvitees;
+		this.idOfInvitees = idsOfInvitees;
 		return this;
 	}
 
@@ -135,7 +110,7 @@ public class Event {
 	}
 
 	public Event idsOfInviteesWhoAccepted(ArrayList<Long> idsOfInviteesWhoAccepted) {
-		this.idsOfInviteesWhoAccepted = idsOfInviteesWhoAccepted;
+		this.idOfInviteesWhoAccepted = idsOfInviteesWhoAccepted;
 		return this;
 	}
 

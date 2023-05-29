@@ -1,27 +1,9 @@
-package com.agenda.client.Domain;
-
-import java.time.LocalDate;
-import java.time.LocalTime;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Column;
-
-@Entity
 public class RescheduleRequest {
 
-	@Id
 	private Long id;
-
-	@Column(name = "invitationId")
 	private Long invitationId;
-
-	@Column(name = "date")
 	private LocalDate date;
-
-	@Column(name = "time")
 	private LocalTime time;
-
-	@Column(name = "status")
 	private InvitationStatus status;
 
 	public RescheduleRequest(Long id) {
@@ -54,7 +36,7 @@ public class RescheduleRequest {
 		return this.time;
 	}
 
-	public RescheduleRequest time(LocalTime time) {
+	public RescheduleRequest time(LocalDate time) {
 		this.time = time;
 		return this;
 	}

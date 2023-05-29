@@ -1,28 +1,12 @@
-package com.agenda.client.Domain;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Column;
-
-@Entity
 public class InvitationToEvent {
 
-	@Id
 	private Long id;
-
-	@Column(name = "eventId")
 	private Long eventId;
-
-	@Column(name = "inviterId")
 	private Long inviterId;
-
-	@Column(name = "inviteeId")
 	private Long inviteeId;
-
-	@Column(name = "status")
 	private InvitationStatus status;
 
-	public InvitationToEvent(Long id) {
+	public InvitationtToEvent(Long id) {
 		this.id = id;
 	}
 
@@ -61,7 +45,7 @@ public class InvitationToEvent {
 		return this.status;
 	}
 
-	public InvitationToEvent status(InvitationStatus status) {
+	public InvitationStatus status(Invitation status) {
 		this.status = status;
 		return this;
 	}

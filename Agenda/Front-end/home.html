@@ -3,6 +3,7 @@
 	<head>
 		<title>Your agenda</title>
 		<link rel="stylesheet" href="home.css">
+		<meta charset="UTF-8">
 	</head>
 	<body>
 		<h1 id="title-header">Agenda</h1>
@@ -27,7 +28,7 @@
 			<form id="schedule-an-event-form"
 			      method="post"
 			      enctype="application/x-www-form-urlencoded"
-			      action="">
+			      action="http://localhost:8000/schedule-event">
 				<h2>New event</h2>
 				<div class="label-and-input">
 					<label for="schedule-form-name-input">Name</label>
@@ -56,15 +57,18 @@
 				<div>
 					<button id="invite-people-button"
 						class="primary-button"
+						type="button"
 						>Invite people</button>
 				</div>
 				<div>
 					<button id="schedule-form-schedule-event-button"
 						class="primary-button"
 						type="submit"
+						form="schedule-an-event-form"
 						>Schedule event</button>
 					<button id="schedule-form-cancel-scheduling-button"
 						class="secondary-button"
+						type="button"
 						>Cancel scheduling</button>
 				</div>
 			</form>
