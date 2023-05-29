@@ -55,7 +55,7 @@ public class Event {
 		json.put("date", this.date.toString());
 		json.put("time", this.time.toString());
 		json.put("place", this.place);
-		json.put("creatorId", "" + this.creatorId.toString());
+		json.put("creatorId", this.creatorId.toString());
 		return json;
 	}
 

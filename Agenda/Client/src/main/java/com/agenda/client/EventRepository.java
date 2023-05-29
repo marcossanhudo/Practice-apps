@@ -25,7 +25,8 @@ public class EventRepository /*implements CrudRepository<Event, Long>*/ {
 
 	//@Override
 	public Event save(Event event) {
-		return events.put(event.id(), event);
+		events.put(event.id(), event);
+		return events.get(event.id());
 	}
 
 	//@Override

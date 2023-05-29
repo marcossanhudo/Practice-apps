@@ -46,14 +46,14 @@ public class EventController {
 	}
 
 	@PostMapping(path = "/schedule-event",
-		consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE,
-		produces = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+		consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
 	@ResponseBody
 	public HashMap<String, String> scheduleEvent(@RequestParam("name") String name,
 		@RequestParam("date") LocalDate date, @RequestParam ("time") LocalTime time,
 		@RequestParam("place") String place) {
-		try { 
-			return eventRepository.save(new Event(new Long(1))
+		try {
+			Long id = new Long(1); 
+			return eventRepository.save(new Event(id)
 				.name(name)
 				.date(date)
 				.time(time)
@@ -61,7 +61,7 @@ public class EventController {
 				.creatorId(new Long(1))
 			).toJSON();
 		} catch (Exception e) {
-			throw e;	
+			return new HashMap<String, String>();	
 		}
 	}
 
