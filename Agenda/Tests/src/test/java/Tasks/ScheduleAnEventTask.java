@@ -30,8 +30,8 @@ public class ScheduleAnEventTask {
 
 		ScheduleEventForm scheduleEventForm = new ScheduleEventForm(this.driver);
 		scheduleEventForm.getNameInput().sendKeys("New event");
-		scheduleEventForm.getDateInput().sendKeys("05-28-2023");
-		scheduleEventForm.getTimeInput().sendKeys("10:00AM");
+		scheduleEventForm.getDateInput().sendKeys("2023-05-28");
+		scheduleEventForm.getTimeInput().sendKeys("10:00");
 		scheduleEventForm.getPlaceInput().sendKeys("A place");
 		Thread.sleep(3000);
 		scheduleEventForm.getScheduleEventButton().click();
