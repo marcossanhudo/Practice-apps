@@ -1,0 +1,149 @@
+{
+	"info": {
+		"_postman_id": "",
+		"name": "Test requests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": ""
+	},
+	"item": [
+		{
+			"name": "get-users-events",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/user/1/events",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"user",
+						"1",
+						"events"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "schedule-event",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "New event name",
+							"type": "text"
+						},
+						{
+							"key": "date",
+							"value": "2023-05-29",
+							"type": "text"
+						},
+						{
+							"key": "time",
+							"value": "10:15",
+							"type": "text"
+						},
+						{
+							"key": "place",
+							"value": "Somewhere",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8000/schedule-event",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"schedule-event"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-event",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/event/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"event",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cancel-event",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/cancel-event/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"cancel-event",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "reschedule-event",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "eventId",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "date",
+							"value": "2023-06-01",
+							"type": "text"
+						},
+						{
+							"key": "time",
+							"value": "11:00",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8000/reschedule-event",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"reschedule-event"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

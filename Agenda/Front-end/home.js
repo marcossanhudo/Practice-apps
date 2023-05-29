@@ -1,8 +1,17 @@
+const userId = 1;
+
 enableScheduleAnEventForm(false);
 getById("schedule-an-event-button").onclick = () => { enableScheduleAnEventForm(true); }
-getById("schedule-form-cancel-scheduling-button").onclick = () => { enableScheduleAnEventForm(false); }
-//populateAgenda();
+getById("schedule-form-cancel-scheduling-button").onclick = async () => { await enableScheduleAnEventForm(false); }
+getById("schedule-form-schedule-event-button").onclick = () => { enableScheduleAnEventForm(false); }
+populateAgenda();
 //simulateInvite();
+
+getById("schedule-an-event-form").addEventListener("submit", function() {
+	setTimeout(function () {
+		populateAgenda();
+	}, 500);
+})
 
 function enableScheduleAnEventForm(enable) {
 	switch (enable) {
@@ -13,6 +22,7 @@ function enableScheduleAnEventForm(enable) {
 		default:
 		case true:
 			getById("schedule-an-event-button").style.display = "none";
+			getById("schedule-an-event-form").reset();
 			getById("schedule-an-event-form").style.display = "block";
 			break;
 	}
@@ -35,40 +45,40 @@ function addEvent() {
 	enableScheduleAnEventForm(false);
 }
 
-function populateAgenda() {
-	var events = [{
-	name: "Meeting",
-	dateTime: new Date(2023, 4, 26, 10, 30, 00),
-	place: "Meeting room 5"
-}, {
-	name: "Party",
-	dateTime: new Date(2023, 4, 26, 22, 30, 00),
-	place: "Daniel's house"
-}, {
-	name: "Test",
-	dateTime: new Date(2024, 6, 29, 19, 00, 00),
-	place: "Room 404"
-}]
+async function populateAgenda() {
+	const events = await fetch("http://localhost:8000/user/" + userId + "/events");
+	const json = await events.json();
+	console.log(json);
 
 	today = Date.now();
-	events.forEach((event) => {
-		newEvent = document.createElement("li");
-		newEvent.className = "event-key-details";
-		newEvent.ariaLabel = "Event";
-
-		newEventName = document.createElement("h3");
-		newEventName.innerHTML = event.name;
-		newEvent.appendChild(newEventName);
-
-		newEventName = document.createElement("p");
-		newEventName.innerHTML = getRelativeName(event.dateTime) + ", at " + getFriendlyTimeHHMM(event.dateTime) + ".";
-		newEvent.appendChild(newEventName);
-
-		if (event.dateTime.getTime() - today.getTime() < (1000 * 60 * 60 * 24 * 7))
-			getById("events-happening-soon").appendChild(newEvent);	
-		else
-			getById("events-happening-later").appendChild(newEvent);	
+	json.forEach((event) => {
+		renderEventKeyDetailListing(event);
 	})
+}
+
+function renderEventKeyDetailListing(event) {
+	newEvent = document.createElement("li");
+	newEvent.className = "event-key-details";
+	newEvent.ariaLabel = "Event";
+
+	newEventName = document.createElement("h3");
+	newEventName.className = "event-name-header";
+	newEventName.innerHTML = event.name;
+	newEvent.appendChild(newEventName);
+
+	newEventDateTime = document.createElement("p");
+	newEventDateTime.className = "event-datetime-paragraph";
+	const dateTime = new Date(event.date + "T" + event.time);
+	newEventDateTime.innerHTML = getRelativeName(dateTime) + ", at " + getFriendlyTimeHHMM(dateTime) + ".";
+	newEvent.appendChild(newEventDateTime);
+
+	if (dateTime.getTime() - today.getTime() < (1000 * 60 * 60 * 24 * 7)) {
+		getById("no-events-happening-soon-paragraph").style.display = "none";
+		getById("events-happening-soon").appendChild(newEvent);
+	} else {
+		getById("no-events-happening-later-paragraph").style.display = "none";
+		getById("events-happening-later").appendChild(newEvent);
+	}
 }
 
 function simulateInvite() {
@@ -132,7 +142,6 @@ function simulateInvite() {
 function getRelativeName(date) {
 	weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 	today = new Date(Date.now());
-		console.log(date, today)
 	
 	if (date.getDate() === today.getDate())
 		return "Today";

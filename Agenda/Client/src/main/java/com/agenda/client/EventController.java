@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -47,33 +49,41 @@ public class EventController {
 		consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE,
 		produces = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
 	@ResponseBody
-	public String scheduleEvent(@RequestParam("name") String name,
+	public HashMap<String, String> scheduleEvent(@RequestParam("name") String name,
 		@RequestParam("date") LocalDate date, @RequestParam ("time") LocalTime time,
 		@RequestParam("place") String place) {
 		try { 
-			eventRepository.save(new Event(new Long(1))
+			return eventRepository.save(new Event(new Long(1))
 				.name(name)
 				.date(date)
 				.time(time)
 				.place(place)
-				.creatorId(new Long(1)));
-			return "redirect:/home.html";
+				.creatorId(new Long(1))
+			).toJSON();
 		} catch (Exception e) {
 			throw e;	
 		}
 	}
 
-	/*@PostMapping("/reschedule-event")
+	@DeleteMapping("/cancel-event/{eventId}")
 	@ResponseBody
-	public void rescheduleEvent(@RequestAttribute("eventId") Long id, @RequestAttribute("dateTime") LocalDateTime dateTime) {
+	public HashMap<String, String> cancelEvent(@PathVariable("eventId") Long id) {
+		return eventRepository.delete(id).toJSON();
+	}
+
+	@PutMapping("/reschedule-event")
+	@ResponseBody
+	public HashMap<String, String> rescheduleEvent(@RequestParam("eventId") Long id,
+		@RequestParam("date") LocalDate date, @RequestParam("time") LocalTime time) {
 		try {
 			Event event = eventRepository.findById(id);
-			eventRepository.save(event
-				.date(dateTime.toLocalDate())
-				.time(dateTime.toLocalTime()));
+			return eventRepository.save(event
+				.date(date)
+				.time(time)
+			).toJSON();
 		} catch (Exception e) {
-			;
+			throw e;
 		}
-	}*/
+	}
 
 }

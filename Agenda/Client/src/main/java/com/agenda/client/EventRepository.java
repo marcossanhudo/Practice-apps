@@ -25,13 +25,16 @@ public class EventRepository /*implements CrudRepository<Event, Long>*/ {
 
 	//@Override
 	public Event save(Event event) {
-		events.put(event.id(), event);
-		return events.get(event.id());
+		return events.put(event.id(), event);
 	}
 
 	//@Override
 	public Event findById(Long id) {
 		return events.get(id);
+	}
+
+	public Event delete(Long id) {
+		return events.remove(id);
 	}
 
 	//@Override
