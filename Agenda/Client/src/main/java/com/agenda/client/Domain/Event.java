@@ -3,6 +3,7 @@ package com.agenda.client.Domain;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.HashMap;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Column;
@@ -45,6 +46,17 @@ public class Event {
 
 	public Long id() {
 		return this.id;
+	}
+
+	public HashMap<String, String> toJSON() {
+		HashMap<String, String> json = new HashMap<>();
+		json.put("id", this.id.toString());
+		json.put("name", this.name);
+		json.put("date", this.date.toString());
+		json.put("time", this.time.toString());
+		json.put("place", this.place);
+		json.put("creatorId", "" + this.creatorId.toString());
+		return json;
 	}
 
 	public String name() {
