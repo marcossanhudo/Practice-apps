@@ -62,28 +62,28 @@ function renderEventKeyDetailListing(event) {
 	newEventLink = document.createElement("a");
 	newEventLink.href = "/event.html?id=" + event.id;
 
-	newEvent.className = "event-key-details";
+	newEventLink.className = "event-key-details";
 	newEvent.ariaLabel = "Event";
 
 	newEventName = document.createElement("h3");
 	newEventName.className = "event-name-header";
 	newEventName.innerHTML = event.name;
-	newEvent.appendChild(newEventName);
+	newEventLink.appendChild(newEventName);
 
 	newEventDateTime = document.createElement("p");
 	newEventDateTime.className = "event-datetime-paragraph";
 	const dateTime = new Date(event.date + "T" + event.time);
 	newEventDateTime.innerHTML = getRelativeName(dateTime) + ", at " + getFriendlyTimeHHMM(dateTime) + ".";
-	newEvent.appendChild(newEventDateTime);
+	newEventLink.appendChild(newEventDateTime);
 
-	newEventLink.appendChild(newEvent);
+	newEvent.appendChild(newEventLink);
 
 	if (dateTime.getTime() - today.getTime() < (1000 * 60 * 60 * 24 * 7)) {
 		getById("no-events-happening-soon-paragraph").style.display = "none";
-		getById("events-happening-soon").appendChild(newEventLink);
+		getById("events-happening-soon").appendChild(newEvent);
 	} else {
 		getById("no-events-happening-later-paragraph").style.display = "none";
-		getById("events-happening-later").appendChild(newEventLink);
+		getById("events-happening-later").appendChild(newEvent);
 	}
 }
 

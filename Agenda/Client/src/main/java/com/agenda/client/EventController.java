@@ -52,7 +52,7 @@ public class EventController {
 		@RequestParam("date") LocalDate date, @RequestParam ("time") LocalTime time,
 		@RequestParam("place") String place) {
 		try {
-			Long id = new Long(1); 
+			Long id = new Long(eventRepository.repositorySize() + 1); 
 			eventRepository.save(new Event(id)
 				.name(name)
 				.date(date)

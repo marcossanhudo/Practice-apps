@@ -10,13 +10,75 @@
 		<a id="home-link" href="home.html">Your agenda</a>
 		<h1 id="title-header">Event</h1>
 		<h2 id="event-name-header">Event name</h2>
-		<section>
+		<section aria-labelledby="">
 			<p id="event-datetime-paragraph">Weekday, 1 Month, at 00:00 XM.</p>
 			<p id="event-place-paragraph">At place name.</p>
 			<p id="event-description-paragraph">Event description so that the people involved don't forget important details about the event.</p>
 			<button id="edit-details-button" class="primary-button">Edit details</button>
 			<button id="reschedule-event-button" class="primary-button">Reschedule event</button>
 			<button id="cancel-event-button" class="primary-button">Cancel event</button>
+			<!--<form method="put">
+				<h3>Details</h3>
+				<div class="label-and-input">
+					<label for="edit-details-name-input">Name</label>
+					<input id="edit-details-name-input"
+						name="name"
+						type="text"></input>
+				</div>
+				<div class="label-and-input">
+					<label for="edit-details-place-input">Place</label>
+					<input id="edit-details-place-input"
+						name="place"
+						type="text"></input>
+				</div>
+				<div class="label-and-input">
+					<label for="edit-details-description-input">Description</label>
+					<input id="edit-details-description-input"
+						name="description"
+						type="text"></input>
+				</div>
+				<div>
+					<button id="reschule-form-reschedule-event-button"
+						class="primary-button"
+						type="submit"
+						>Reschedule event</button>
+					<button id="reschule-form-cancel-reschedule-button"
+						class="secondary-button"
+						type="button"
+						>Cancel reschedule</button>
+				</div>
+			</form>
+			<form method="put">
+				<h3>Reschedule</h3>
+				<div class="label-and-input">
+					<label for="reschedule-date-input">Date</label>
+					<input id="reschedule-date-input"
+						name="date"
+						type="date"></input>
+				</div>
+				<div class="label-and-input">
+					<label for="reschedule-time-input">Time</label>
+					<input id="reschedule-time-input"
+						name="time"
+						type="time"></input>
+				</div>
+				<div>
+					<button id="reschule-form-reschedule-event-button"
+						class="primary-button"
+						type="submit"
+						>Reschedule event</button>
+					<button id="reschule-form-cancel-reschedule-button"
+						class="secondary-button"
+						type="button"
+						>Cancel reschedule</button>
+				</div>
+			</form>
+			<div>
+				<h3>Warning</h3>
+				<p>If you cancel the event, it will be deleted from your agenda. If people were invited to the event, they will be notified about the cancellation.</p>
+				<button id="cancel-event-cancel-event-button" class="primary-button">Cancel event</button>
+				<button id="cancel-event-dont-cancel-button" class="secondary-button">Don't cancel</button>
+			</div> -->
 		</section>
 		<section aria-labelledby="invitees-header">
 			<h3 id="invitees-header">Invitees</h3>

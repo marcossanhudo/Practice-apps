@@ -22,8 +22,16 @@ async function populatePage() {
 function renderEventDetails(eventDetails) {
 	getById("event-name-header").innerHTML = eventDetails.name;
 	getById("event-datetime-paragraph").innerHTML = eventDetails.date + ", at " + eventDetails.time + ".";
-	getById("event-place-paragraph").innerHTML = eventDetails.place;
-	getById("event-description-paragraph").innerHTML = eventDetails.description;
+
+	if (hasText(eventDetails.place))
+		getById("event-place-paragraph").innerHTML = eventDetails.place;
+	else
+		getById("event-place-paragraph").innerHTML = "No place provided.";
+
+	if (hasText(eventDetails.description))
+		getById("event-description-paragraph").innerHTML = eventDetails.description;
+	else
+		getById("event-description-paragraph").innerHTML = "No description provided.";
 }
 
 async function getEventDetails(params) {
@@ -50,6 +58,14 @@ function getURLParams() {
 	} catch (e) {
 		;
 	}
+}
+
+function hasText(textElement) {
+	if (textElement !== null
+		&& textElement !== undefined
+		&& textElement !== "")
+		return true;
+	return false;
 }
 
 function getById(id) {

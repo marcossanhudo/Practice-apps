@@ -43,4 +43,8 @@ public class EventRepository /*implements CrudRepository<Event, Long>*/ {
 		events.clear();
 	}
 
+	public int repositorySize() {
+		return events.size();
+	}
+
 }
