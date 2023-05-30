@@ -34,17 +34,20 @@ h3 {
 }
 
 p {
-	margin: 0em 0em 0.55em;
+	margin: 0em 0em 1em;
 }
 
 ol {
 	padding: 0em;
 }
 
-a li.event-key-details {	// fix this
-	text-decoration: none;
+#home-link {
+	color: var(--light-accent-color);
+	display: block;
+	margin: 0em 0em 0.55em;
 }
 
+#home-link,
 button:hover {
 	cursor: pointer;
 }

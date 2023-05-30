@@ -1,11 +1,4 @@
 :root {
-	--accent-color: #511eff;
-	--light-accent-color: #cbbcff;
-	--accent-color-half-opacity: #511eff55;
-	--light-primary: #fefefe;
-	--dark-primary: #0e0e0e;
-	--dark-background-secondary: #303030;
-	--dark-background-primary: #202020;
 	background-color: var(--dark-background-secondary);
 	padding: 0em calc(50vw - 40ch);
 }
@@ -41,7 +34,7 @@ h3 {
 }
 
 p {
-	margin: 0em 0em 0.55em;
+	margin: 0em 0em 1em;
 }
 
 ol {

@@ -58,6 +58,10 @@ async function populateAgenda() {
 
 function renderEventKeyDetailListing(event) {
 	newEvent = document.createElement("li");
+
+	newEventLink = document.createElement("a");
+	newEventLink.href = "/event.html?id=" + event.id;
+
 	newEvent.className = "event-key-details";
 	newEvent.ariaLabel = "Event";
 
@@ -72,12 +76,14 @@ function renderEventKeyDetailListing(event) {
 	newEventDateTime.innerHTML = getRelativeName(dateTime) + ", at " + getFriendlyTimeHHMM(dateTime) + ".";
 	newEvent.appendChild(newEventDateTime);
 
+	newEventLink.appendChild(newEvent);
+
 	if (dateTime.getTime() - today.getTime() < (1000 * 60 * 60 * 24 * 7)) {
 		getById("no-events-happening-soon-paragraph").style.display = "none";
-		getById("events-happening-soon").appendChild(newEvent);
+		getById("events-happening-soon").appendChild(newEventLink);
 	} else {
 		getById("no-events-happening-later-paragraph").style.display = "none";
-		getById("events-happening-later").appendChild(newEvent);
+		getById("events-happening-later").appendChild(newEventLink);
 	}
 }
 
