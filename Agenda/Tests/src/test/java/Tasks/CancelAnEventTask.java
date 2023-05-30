@@ -1,0 +1,34 @@
+package Tasks;
+
+import org.openqa.selenium.WebDriver;
+import PageObjects.*;
+import Validations.*;
+
+public class CancelAnEventTask {
+	
+	private WebDriver driver;
+	private EventPage eventPage;
+	private AgendaPage agendaPage;
+	private EventValidation eventValidation;
+	private AgendaValidation agendaValidation;
+	
+	
+	public CancelAnEventTask(WebDriver driver) { 
+		this.driver = driver;
+		this.eventPage = new EventPage(this.driver);
+		this.agendaPage = new AgendaPage(this.driver);
+		this.eventValidation = new EventValidation(this.driver);
+		this.agendaValidation = new AgendaValidation(this.driver);
+	}
+	
+	/* When the user tries to cancel an event in his personal agenda,
+	 * Then the event is removed from the user's personal agenda.
+	 */
+	
+	public void cancelAnEvent() {
+		eventValidation.validateEventDetails();
+		eventPage.getCancelEventButton().click();
+		agendaValidation.validateEventNonListing();
+	}
+	
+}
