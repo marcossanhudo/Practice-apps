@@ -7,7 +7,7 @@ getById("cancel-event-button").onclick = () => { cancelEvent(eventDetails) };
 
 async function cancelEvent() {
 	await fetch("http://localhost:8000/cancel-event/" + eventDetails.id, { method: "DELETE" });
-	//window.location.href = "http://localhost:8000/home.html";
+	window.location.href = "http://localhost:8000/home.html";
 }
 
 async function populatePage() {
