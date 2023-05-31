@@ -1,5 +1,6 @@
 var eventDetails = {};
 
+getById("cancel-event-warning").style.display = "none";
 populatePage();
 getById("edit-details-button").onclick = () => {  };
 getById("reschedule-event-button").onclick = () => {  };
@@ -26,7 +27,7 @@ function renderEventDetails(eventDetails) {
 	getById("event-datetime-paragraph").innerHTML = eventDetails.date + ", at " + eventDetails.time + ".";
 
 	if (hasText(eventDetails.place))
-		getById("event-place-paragraph").innerHTML = "At " + eventDetails.place;
+		getById("event-place-paragraph").innerHTML = "At " + eventDetails.place + ".";
 	else
 		getById("event-place-paragraph").innerHTML = "No place provided.";
 
