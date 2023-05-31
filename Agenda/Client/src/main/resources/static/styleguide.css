@@ -4,6 +4,143 @@
 	--accent-color-half-opacity: #511eff55;
 	--light-primary: #fefefe;
 	--dark-primary: #0e0e0e;
-	--dark-background-secondary: #303030;
+	--dark-background-secondary: #252525;
 	--dark-background-primary: #202020;
+	--warning-color: #ff1e1e;
+	--warning-color-half-opacity: #ff1e1e55;
+}
+
+:root {
+	background-color: var(--dark-background-secondary);
+	padding: 0em calc(50vw - 40ch);
+}
+
+:root * {
+	font-family: SF Pro, Segoe UI, Roboto, Arial;
+	color: var(--light-primary);
+	max-width: calc(80ch + 1.5em);
+}
+
+body {
+	margin: 2em;
+}
+
+section {
+	margin-bottom: 1.5em;
+}
+
+div {
+	margin-bottom: 0.70em;
+}
+
+h1 {
+	margin: 0em 0em 1em;
+}
+
+h2 {
+	margin: 0em 0em 0.85em;
+}
+
+h3 {
+	margin: 0em 0em 0.70em;
+}
+
+p {
+	margin: 0em 0em 1em;
+}
+
+.primary-button,
+.secondary-button {
+	padding: 0.5em;
+	font-size: 1em;
+	font-weight: 600;
+	border-radius: 8px;
+	border: 2px solid var(--accent-color);
+}
+
+.primary-button {
+	background-color: var(--accent-color);
+}
+
+.secondary-button {
+	background-color: transparent;
+}
+
+button:hover,
+input:hover {
+	animation-name: accent-element-come-closer;
+	animation-duration: 0.300s;
+	animation-fill-mode: forwards;
+}
+
+button:hover {
+	cursor: pointer;
+}
+
+.warning {
+	border-radius: 8px;
+	padding: 1.5em;
+	background-color: var(--dark-background-primary);
+	margin-bottom: 1em;
+	border: 2px solid #ff1e1e;
+}
+
+.warning .primary-button,
+.warning .secondary-button {
+	border-color: var(--warning-color);
+}
+
+.warning .primary-button {
+	background-color: var(--warning-color);
+}
+
+.warning:hover {
+	animation: warning-element-come-closer;
+	animation-duration: 0.300s;
+	animation-fill-mode: forwards;
+}
+
+.warning button:hover,
+.warning input:hover {
+	animation-name: warning-element-come-closer;
+	animation-duration: 0.300s;
+	animation-fill-mode: forwards;
+}
+
+.warning:load {
+	animation-name: appear;
+	animation-duration: 0.300s;
+	animation-fill-mode: forwards;
+}
+
+@keyframes appear {
+	0% { height: 0; }
+	100% { height: auto; }
+}
+
+@keyframes accent-element-come-closer {
+	0% {
+		box-shadow: none;
+	}
+	100% {
+		box-shadow: 0px 0px 4px 4px var(--accent-color-half-opacity);
+	}
+}
+
+@keyframes dark-element-come-closer {
+	0% {
+		box-shadow: none;
+	}
+	100% {
+		box-shadow: 0px 0px 4px 4px var(--accent-color);
+	}
+}
+
+@keyframes warning-element-come-closer {
+	0% {
+		box-shadow: none;
+	}
+	100% {
+		box-shadow: 0px 0px 4px 4px var(--warning-color-half-opacity);
+	}
 }

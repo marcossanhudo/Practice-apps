@@ -3,7 +3,9 @@ var eventDetails = {};
 populatePage();
 getById("edit-details-button").onclick = () => {  };
 getById("reschedule-event-button").onclick = () => {  };
-getById("cancel-event-button").onclick = () => { cancelEvent(eventDetails) };
+getById("cancel-event-button").onclick = () => { getById("cancel-event-warning").style.display = "block"; };
+getById("cancel-event-cancel-event-button").onclick = () => { cancelEvent(eventDetails); };
+getById("cancel-event-dont-cancel-button").onclick = () => { getById("cancel-event-warning").style.display = "none"; };
 
 async function cancelEvent() {
 	await fetch("http://localhost:8000/cancel-event/" + eventDetails.id, { method: "DELETE" });
@@ -24,7 +26,7 @@ function renderEventDetails(eventDetails) {
 	getById("event-datetime-paragraph").innerHTML = eventDetails.date + ", at " + eventDetails.time + ".";
 
 	if (hasText(eventDetails.place))
-		getById("event-place-paragraph").innerHTML = eventDetails.place;
+		getById("event-place-paragraph").innerHTML = "At " + eventDetails.place;
 	else
 		getById("event-place-paragraph").innerHTML = "No place provided.";
 
