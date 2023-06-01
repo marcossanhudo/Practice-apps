@@ -55,10 +55,43 @@ async function populateAgenda() {
 	const json = await events.json();
 	console.log(json);
 
+	clearAgenda();
+
 	today = Date.now();
 	json.forEach((event) => {
 		renderEventKeyDetailListing(event);
 	})
+}
+
+function clearAgenda() {
+	/*
+	if (getById("events-happening-right-now").children !== undefined
+		&& getById("events-happening-right-now").children.length > 0)
+		getById("events-happening-right-now").children.forEach(child => {
+			if (elementIsEvent(child))
+				child.remove();
+		});*/
+
+	if (getById("events-happening-soon").children !== undefined
+		&& getById("events-happening-soon").children.length > 0)
+		getById("events-happening-soon").children.forEach(child => {
+			if (elementIsEvent(child))
+				child.remove();
+		});
+
+	if (getById("events-happening-later").children !== undefined
+		&& getById("events-happening-later").children.length > 0)
+		getById("events-happening-later").children.forEach(child => {
+			if (elementIsEvent(child))
+				child.remove();
+		});
+}
+
+function elementIsEvent(element) {
+	if (element.className === "event-key-details"
+		|| element.className === "event-all-details")
+		return true;
+	return false;
 }
 
 function renderEventKeyDetailListing(event) {
@@ -96,20 +129,24 @@ async function sendScheduleAnEventRequest(event) {
 	//event.preventDefault();
 	formData = new FormData(getById("schedule-an-event-form"), getById("schedule-form-schedule-event-button"));
 	formData.append("creatorId", userId);
-	console.log(JSON.stringify(formData));
-	await fetch(/*endpoints.*/ scheduleEvent, { method: "POST", body: JSON.stringify(formData) });
+	console.log(formData);
+	console.log(JSON.stringify(formData.entries));
+	await fetch(/*endpoints.*/ scheduleEvent, { method: "POST", body: JSON.stringify(formData.entries) });
 }
 
 function getRelativeName(date) {
 	weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 	today = new Date(Date.now());
 	
-	if (date.getDate() === today.getDate())
-		return "Today";
-	if (date.getDate() === today.getDate() + 1)
-		return "Tomorrow";
-	if (date.getMonth() === today.getMonth())
+	if (date.getFullYear() === today.getFullYear() &&
+		date.getMonth() === today.getMonth()) {
+		if (date.getDate() === today.getDate())
+			return "Today";
+		if (date.getDate() === today.getDate() + 1)
+			return "Tomorrow";
 		return weekdays[date.getDay()] + ", " + date.getDate();
+	}
+
 	return "On " + date.getDate() + "/" + (date.getMonth() + 1) + (date.getFullYear() !== today.getFullYear() ? "/" + date.getFullYear() : "");
 }
 
