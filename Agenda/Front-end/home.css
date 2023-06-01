@@ -3,7 +3,7 @@ ol, ul {
 }
 
 #schedule-an-event-form input,
-#invitee-management input,
+#invitee-management-interface input,
 #invitee-search-results {
 	padding: 0.5em;
 	font-size: 1em;
@@ -18,7 +18,7 @@ button {
 }
 
 #schedule-an-event-form,
-#invitee-management {
+#invitee-management-interface {
 	border-radius: 8px;
 	padding: 1.5em;
 	background-color: var(--dark-background-primary);
@@ -31,7 +31,7 @@ button {
 }
 
 #schedule-an-event-form label,
-#invitee-management label {
+#invitee-management-interface label {
 	display: inline-block;
 	min-width: 20ch;
 	font-size: 1em;
@@ -40,8 +40,8 @@ button {
 }
 
 #schedule-an-event-form input,
-#manage-invitees-button,
-#invitee-management input,
+#schedule-form-manage-invitees-button,
+#invitee-management-interface input,
 #invitee-search-results {
 	width: calc(100% - 11.38em);
 	box-sizing: border-box;
@@ -49,7 +49,7 @@ button {
 }
 
 #schedule-an-event-form input,
-#invitee-management input,
+#invitee-management-interface input,
 #invitee-search-results {
 	background-color: transparent;
 }
@@ -101,7 +101,7 @@ li {
 #schedule-an-event-form *:last-child,
 .event-all-details *:last-child,
 .event-key-details *:last-child,
-#invitee-management *:last-child,
+#invitee-management-interface *:last-child,
 .invitee *:last-child {
 	margin-bottom: 0em;
 }

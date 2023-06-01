@@ -1,16 +1,26 @@
 const userId = 1;
+//endpoints = {
+	const base = "http://localhost:8000";
+	const usersEvents = base + "/user" + "/" + userId + "/events";
+	const scheduleEvent = base + "/schedule-event";
+//}
 
 enableScheduleAnEventForm(false);
+enableInviteeManagementInterface(false);
 getById("schedule-an-event-button").onclick = () => { enableScheduleAnEventForm(true); }
-getById("schedule-form-cancel-scheduling-button").onclick = async () => { await enableScheduleAnEventForm(false); }
+getById("schedule-form-cancel-scheduling-button").onclick = async () => { enableScheduleAnEventForm(false); }
 getById("schedule-form-schedule-event-button").onclick = () => { enableScheduleAnEventForm(false); }
+getById("schedule-form-manage-invitees-button").onclick = () => { enableInviteeManagementInterface(true); }
+getById("invitee-management-cancel-changes-button").onclick = () => { enableInviteeManagementInterface(false); }
 populateAgenda();
 //simulateInvite();
 
-getById("schedule-an-event-form").addEventListener("submit", function() {
+getById("schedule-an-event-form").addEventListener("submit", /*async*/ function(event) {
+	//event.preventDefault();
+	//await sendScheduleAnEventRequest()
 	setTimeout(function () {
 		populateAgenda();
-	}, 500);
+	}, 300);
 })
 
 function enableScheduleAnEventForm(enable) {
@@ -28,25 +38,20 @@ function enableScheduleAnEventForm(enable) {
 	}
 }
 
-function addEvent() {
-	newEvent = document.createElement("li");
-	newEvent.className = "event-key-details";
-	newEvent.ariaLabel = "Event";
-
-	newEventName = document.createElement("h3");
-	newEventName.innerHTML = getById("schedule-form-name-input").value;
-	newEvent.appendChild(newEventName);
-
-	newEventName = document.createElement("p");
-	newEventName.innerHTML = getRelativeName(getById("schedule-form-date-input").value) + ", at " + getById("schedule-form-time-input").value + ".";
-	newEvent.appendChild(newEventName);
-
-	getById("events-happening-soon").appendChild(newEvent);
-	enableScheduleAnEventForm(false);
+function enableInviteeManagementInterface(enable) {
+	switch (enable) {
+		case false:
+			getById("invitee-management-interface").style.display = "none";
+			break;
+		default:
+		case true:
+			getById("invitee-management-interface").style.display = "block";
+			break;
+	}
 }
 
 async function populateAgenda() {
-	const events = await fetch("http://localhost:8000/user/" + userId + "/events");
+	const events = await fetch(/*endpoints.*/ usersEvents);
 	const json = await events.json();
 	console.log(json);
 
@@ -85,6 +90,73 @@ function renderEventKeyDetailListing(event) {
 		getById("no-events-happening-later-paragraph").style.display = "none";
 		getById("events-happening-later").appendChild(newEvent);
 	}
+}
+
+async function sendScheduleAnEventRequest(event) {
+	//event.preventDefault();
+	formData = new FormData(getById("schedule-an-event-form"), getById("schedule-form-schedule-event-button"));
+	formData.append("creatorId", userId);
+	console.log(JSON.stringify(formData));
+	await fetch(/*endpoints.*/ scheduleEvent, { method: "POST", body: JSON.stringify(formData) });
+}
+
+function getRelativeName(date) {
+	weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+	today = new Date(Date.now());
+	
+	if (date.getDate() === today.getDate())
+		return "Today";
+	if (date.getDate() === today.getDate() + 1)
+		return "Tomorrow";
+	if (date.getMonth() === today.getMonth())
+		return weekdays[date.getDay()] + ", " + date.getDate();
+	return "On " + date.getDate() + "/" + (date.getMonth() + 1) + (date.getFullYear() !== today.getFullYear() ? "/" + date.getFullYear() : "");
+}
+
+function getFriendlyTimeHHMM(time) {
+	hours = time.getHours();
+	if (hours > 12) {
+		hours -= 12;
+		dayHalf = "PM";
+	} else if (hours === 12) {
+		dayHalf = "PM";
+	} else {
+		dayHalf = "AM";
+	}
+
+	minutes = time.getMinutes();
+	if (time.getMinutes() < 10)
+		minutes = "0" + minutes;
+	
+	return hours + ":" + minutes + dayHalf;
+}
+
+function getById(id) {
+	return document.getElementById(id);
+}
+
+
+
+
+
+
+
+
+function addEvent() {
+	newEvent = document.createElement("li");
+	newEvent.className = "event-key-details";
+	newEvent.ariaLabel = "Event";
+
+	newEventName = document.createElement("h3");
+	newEventName.innerHTML = getById("schedule-form-name-input").value;
+	newEvent.appendChild(newEventName);
+
+	newEventName = document.createElement("p");
+	newEventName.innerHTML = getRelativeName(getById("schedule-form-date-input").value) + ", at " + getById("schedule-form-time-input").value + ".";
+	newEvent.appendChild(newEventName);
+
+	getById("events-happening-soon").appendChild(newEvent);
+	enableScheduleAnEventForm(false);
 }
 
 function simulateInvite() {
@@ -143,39 +215,4 @@ function simulateInvite() {
 
 	getById("no-invite-paragraph").style.display = "none";
 	getById("invites").appendChild(newInvite);
-}
-
-function getRelativeName(date) {
-	weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-	today = new Date(Date.now());
-	
-	if (date.getDate() === today.getDate())
-		return "Today";
-	if (date.getDate() === today.getDate() + 1)
-		return "Tomorrow";
-	if (date.getMonth() === today.getMonth())
-		return weekdays[date.getDay()] + ", " + date.getDate();
-	return "On " + date.getDate() + "/" + (date.getMonth() + 1) + (date.getFullYear() !== today.getFullYear() ? "/" + date.getFullYear() : "");
-}
-
-function getFriendlyTimeHHMM(time) {
-	hours = time.getHours();
-	if (hours > 12) {
-		hours -= 12;
-		dayHalf = "PM";
-	} else if (hours === 12) {
-		dayHalf = "PM";
-	} else {
-		dayHalf = "AM";
-	}
-
-	minutes = time.getMinutes();
-	if (time.getMinutes() < 10)
-		minutes = "0" + minutes;
-	
-	return hours + ":" + minutes + dayHalf;
-}
-
-function getById(id) {
-	return document.getElementById(id);
 }

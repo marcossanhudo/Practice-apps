@@ -58,8 +58,8 @@
 						type="text"></input>
 				</div>
 				<div class="label-and-input">
-					<label for="manage-invitees-button">Invitees</label>
-					<button id="manage-invitees-button"
+					<label for="schedule-form-manage-invitees-button">Invitees</label>
+					<button id="schedule-form-manage-invitees-button"
 						class="primary-button"
 						type="button"
 						>Manage invitees</button>
@@ -76,6 +76,68 @@
 						>Cancel scheduling</button>
 				</div>
 			</form>
+			<div id="invitee-management-interface">
+				<h2>Managing invitees</h2>
+				<p>for New event.</p>
+				<p>Your invitees will be notified about the invite. The event date, time, place, and description will be shared with them. They will also have access to the full invitee list.</p>
+				<div id="invitee-search">
+					<div class="label-and-input">
+						<label for="invitee-search-field">Search for a contact</label>
+						<input id="invitee-search-field"
+							name="invitee-search-input"
+							type="text"></input>
+					</div>
+					<!-- <select id="invitee-search-results" multiple>
+						<option value="person1">Person 1</option>
+						<option value="person2">Person 2</option>
+						<option value="person3">Person 3</option>
+					</select>  -->
+					<ol id="invitee-search-results">
+						<li class="invitee">
+							<p>Invitee Name</p>
+							<p>invitee key</p>
+							<button>Add to invite list</button>
+						</li>
+						<li class="invitee">
+							<p>Invitee Name</p>
+							<p>invitee key</p>
+							<button>Add to invite list</button>
+						</li>
+						<li class="invitee">
+							<p>Invitee Name</p>
+							<p>invitee key</p>
+							<button>Add to invite list</button>
+						</li>
+					</ol>
+				</div>
+				<div id="added-invitee-management">
+					<ul>
+						<li class="invitee">
+							<h3>Invitee Name</h3>
+							<p>invitee key</p>
+							<button>Remove</button>
+						</li>
+						<li class="invitee">
+							<h3>Invitee Name</h3>
+							<p>invitee key</p>
+							<button>Remove</button>
+						</li>
+						<li class="invitee">
+							<h3>Invitee Name</h3>
+							<p>invitee key</p>
+							<button>Remove</button>
+						</li>
+					</ul>
+				</div>
+				<div>
+					<button id="invitee-management-save-changes-button"
+						class="primary-button"
+						>Save changes</button>
+					<button id="invitee-management-cancel-changes-button"
+						class="secondary-button"
+						>Cancel changes</button>
+				</div>
+			</div>
 		</section>
 		<section id="invites-section"
 			aria-labelledby="invites-header">

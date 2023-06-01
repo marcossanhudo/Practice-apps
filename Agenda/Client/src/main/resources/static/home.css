@@ -1,8 +1,10 @@
-ol {
+ol, ul {
 	padding: 0em;
 }
 
-#schedule-an-event-form input {
+#schedule-an-event-form input,
+#invitee-management-interface input,
+#invitee-search-results {
 	padding: 0.5em;
 	font-size: 1em;
 	font-weight: 600;
@@ -15,7 +17,8 @@ button {
 	margin-right: 0.55em;
 }
 
-#schedule-an-event-form {
+#schedule-an-event-form,
+#invitee-management-interface {
 	border-radius: 8px;
 	padding: 1.5em;
 	background-color: var(--dark-background-primary);
@@ -27,7 +30,8 @@ button {
 	padding: 0em 1.5em;
 }
 
-#schedule-an-event-form label {
+#schedule-an-event-form label,
+#invitee-management-interface label {
 	display: inline-block;
 	min-width: 20ch;
 	font-size: 1em;
@@ -36,22 +40,32 @@ button {
 }
 
 #schedule-an-event-form input,
-#manage-invitees-button {
-	width: calc(100% - 21ch);
+#schedule-form-manage-invitees-button,
+#invitee-management-interface input,
+#invitee-search-results {
+	width: calc(100% - 11.38em);
 	box-sizing: border-box;
 	margin-right: 0;
 }
 
-#schedule-an-event-form input {
+#schedule-an-event-form input,
+#invitee-management-interface input,
+#invitee-search-results {
 	background-color: transparent;
 }
 
-ol li {
+#invitee-search-results {
+	margin: 0em 1.5em;
+	width: calc(100% - 3em);
+}
+
+li {
 	list-style-type: none;
 }
 
 .event-all-details,
-.event-key-details {
+.event-key-details,
+.invitee {
 	list-style-type: none;
 	text-decoration: none;
 	display: block;
@@ -59,6 +73,16 @@ ol li {
 	padding: 1.5em;
 	background-color: var(--dark-background-primary);
 	margin-bottom: 1em;
+}
+
+#invitee-search-results li {
+	padding: 0.2em;
+	margin-bottom: 0.3em;
+}
+
+#invitee-search-results li * {
+	display: inline-block;
+	min-width: 15ch;
 }
 
 .event-all-details:hover,
@@ -76,6 +100,8 @@ ol li {
 
 #schedule-an-event-form *:last-child,
 .event-all-details *:last-child,
-.event-key-details *:last-child {
+.event-key-details *:last-child,
+#invitee-management-interface *:last-child,
+.invitee *:last-child {
 	margin-bottom: 0em;
 }

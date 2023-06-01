@@ -1,13 +1,13 @@
 :root {
-	--accent-color: #511eff;
+	--accent-color: #3b00ff;
 	--light-accent-color: #cbbcff;
-	--accent-color-half-opacity: #511eff55;
+	--accent-color-half-opacity: #3b00ff55;
 	--light-primary: #fefefe;
 	--dark-primary: #0e0e0e;
-	--dark-background-secondary: #252525;
-	--dark-background-primary: #202020;
-	--warning-color: #ff1e1e;
-	--warning-color-half-opacity: #ff1e1e55;
+	--dark-background-secondary: #151515;
+	--dark-background-primary: #101010;
+	--warning-color: #af0707;
+	--warning-color-half-opacity: #af070755;
 }
 
 :root {
@@ -82,7 +82,7 @@ button:hover {
 	padding: 1.5em;
 	background-color: var(--dark-background-primary);
 	margin-bottom: 1em;
-	border: 2px solid #ff1e1e;
+	border: 2px solid var(--warning-color);
 }
 
 .warning .primary-button,
