@@ -15,9 +15,9 @@ getById("invitee-management-cancel-changes-button").onclick = () => { enableInvi
 populateAgenda();
 //simulateInvite();
 
-getById("schedule-an-event-form").addEventListener("submit", /*async*/ function(event) {
-	//event.preventDefault();
-	//await sendScheduleAnEventRequest()
+getById("schedule-an-event-form").addEventListener("submit", async function(event) {
+	event.preventDefault();
+	await sendScheduleAnEventRequest()
 	setTimeout(function () {
 		populateAgenda();
 	}, 300);
@@ -55,7 +55,7 @@ async function populateAgenda() {
 	const json = await events.json();
 	console.log(json);
 
-	clearAgenda();
+	await clearAgenda();
 
 	today = Date.now();
 	json.forEach((event) => {
@@ -63,28 +63,33 @@ async function populateAgenda() {
 	})
 }
 
-function clearAgenda() {
+async function clearAgenda() {
 	/*
 	if (getById("events-happening-right-now").children !== undefined
 		&& getById("events-happening-right-now").children.length > 0)
 		getById("events-happening-right-now").children.forEach(child => {
 			if (elementIsEvent(child))
 				child.remove();
-		});*/
+		});
 
 	if (getById("events-happening-soon").children !== undefined
-		&& getById("events-happening-soon").children.length > 0)
-		getById("events-happening-soon").children.forEach(child => {
+		&& getById("events-happening-soon").children.length > 0) {
+		children = await getById("events-happening-soon").children;
+		children.forEach(child => {
 			if (elementIsEvent(child))
 				child.remove();
 		});
+	}
 
 	if (getById("events-happening-later").children !== undefined
-		&& getById("events-happening-later").children.length > 0)
-		getById("events-happening-later").children.forEach(child => {
+		&& getById("events-happening-later").children.length > 0) {
+		children = await getById("events-happening-later").children;
+		children.forEach(child => {
 			if (elementIsEvent(child))
 				child.remove();
 		});
+	}
+	*/
 }
 
 function elementIsEvent(element) {
@@ -126,12 +131,22 @@ function renderEventKeyDetailListing(event) {
 }
 
 async function sendScheduleAnEventRequest(event) {
-	//event.preventDefault();
-	formData = new FormData(getById("schedule-an-event-form"), getById("schedule-form-schedule-event-button"));
-	formData.append("creatorId", userId);
-	console.log(formData);
-	console.log(JSON.stringify(formData.entries));
-	await fetch(/*endpoints.*/ scheduleEvent, { method: "POST", body: JSON.stringify(formData.entries) });
+	requestBody =  "creatorId=" + userId +
+		"&" + "name=" + getById("schedule-form-name-input").value +
+		"&" + "date=" + getById("schedule-form-date-input").value +
+		"&" + "time=" + getById("schedule-form-time-input").value +
+		"&" + "place=" + getById("schedule-form-place-input").value
+	/*{
+		creatorId: userId,
+		name: getById("schedule-form-name-input").value,
+		date: getById("schedule-form-date-input").value,
+		time: getById("schedule-form-time-input").value,
+		place: getById("schedule-form-place-input").value
+	}*/
+
+	console.log(requestBody);
+
+	await fetch(/*endpoints.*/ scheduleEvent, { method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded" }, body: requestBody });
 }
 
 function getRelativeName(date) {

@@ -49,8 +49,8 @@ public class EventController {
 		consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE,
 		produces = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
 	public String scheduleEvent(@RequestParam("name") String name,
-		@RequestParam("date") LocalDate date, @RequestParam ("time") LocalTime time,
-		@RequestParam("place") String place) {
+		@RequestParam("date") LocalDate date, @RequestParam("time") LocalTime time,
+		@RequestParam("place") String place, @RequestParam("creatorId") Long creatorId) {
 		try {
 			Long id = new Long(eventRepository.repositorySize() + 1); 
 			eventRepository.save(new Event(id)
@@ -58,7 +58,8 @@ public class EventController {
 				.date(date)
 				.time(time)
 				.place(place)
-				.creatorId(new Long(1)));
+				.creatorId(creatorId)
+			);
 			return "redirect:/home.html";
 		} catch (Exception e) {
 			throw e;
