@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -48,6 +48,7 @@ public class EventController {
 	@PostMapping(path = "/schedule-event",
 		consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE,
 		produces = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+	@ResponseBody
 	public String scheduleEvent(@RequestParam("name") String name,
 		@RequestParam("date") LocalDate date, @RequestParam("time") LocalTime time,
 		@RequestParam("place") String place, @RequestParam("creatorId") Long creatorId) {
@@ -72,16 +73,37 @@ public class EventController {
 		return eventRepository.delete(id).toJSON();
 	}
 
-	@PutMapping("/reschedule-event")
+	@PatchMapping(path = "/reschedule-event",
+		consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE,
+		produces = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
 	@ResponseBody
-	public HashMap<String, String> rescheduleEvent(@RequestParam("eventId") Long id,
+	public String rescheduleEvent(@RequestParam("eventId") Long id,
 		@RequestParam("date") LocalDate date, @RequestParam("time") LocalTime time) {
 		try {
 			Event event = eventRepository.findById(id);
 			return eventRepository.save(event
 				.date(date)
 				.time(time)
-			).toJSON();
+			).toJSON().toString();
+		} catch (Exception e) {
+			throw e;
+		}
+	}
+
+	@PatchMapping(path = "/edit-event-details",
+		consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE,
+		produces = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+	@ResponseBody
+	public String editEventDetails(@RequestParam("eventId") Long id,
+		@RequestParam("name") String name, @RequestParam("place") String place,
+		@RequestParam("description") String description) {
+		try {
+			Event event = eventRepository.findById(id);
+			return eventRepository.save(event
+				.name(name)
+				.place(place)
+				.description(description)
+			).toJSON().toString();
 		} catch (Exception e) {
 			throw e;
 		}

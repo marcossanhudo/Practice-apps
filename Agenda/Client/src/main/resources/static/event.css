@@ -31,3 +31,50 @@ button {
 .event-key-details:hover {
 	//box-shadow: 0px 0px 4px 4px var(--accent-color);
 }
+
+#edit-details-form,
+#reschedule-event-form {
+	border-radius: 8px;
+	padding: 1.5em;
+	background-color: var(--dark-background-primary);
+	margin-bottom: 1em;
+	border: 2px solid var(--accent-color);
+}
+
+.label-and-input {
+	padding: 0em 1.5em;
+}
+
+#edit-details-form label,
+#reschedule-event-form label {
+	display: inline-block;
+	min-width: 20ch;
+	font-size: 1em;
+	font-weight: 600;
+	margin-bottom: 0.55em;
+}
+
+#edit-details-form input,
+#reschedule-event-form input {
+	padding: 0.5em;
+	font-size: 1em;
+	font-weight: 600;
+	border-radius: 8px;
+	border: 2px solid var(--accent-color);
+	width: calc(100% - 11.38em);
+	box-sizing: border-box;
+	margin-right: 0;
+	background-color: transparent;
+}
+
+#edit-details-form *:last-child,
+#reschedule-event-form *:last-child {
+	margin-bottom: 0em;
+}
+
+#edit-details-form:hover,
+#reschedule-event-form:hover {
+	animation: dark-element-come-closer;
+	animation-duration: 0.300s;
+	animation-fill-mode: forwards;
+}

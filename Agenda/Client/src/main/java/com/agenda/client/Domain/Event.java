@@ -52,6 +52,7 @@ public class Event {
 		HashMap<String, String> json = new HashMap<>();
 		json.put("id", this.id.toString());
 		json.put("name", this.name);
+		json.put("description", this.description);
 		json.put("date", this.date.toString());
 		json.put("time", this.time.toString());
 		json.put("place", this.place);

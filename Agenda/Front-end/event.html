@@ -17,8 +17,9 @@
 			<button id="edit-details-button" class="primary-button">Edit details</button>
 			<button id="reschedule-event-button" class="primary-button">Reschedule event</button>
 			<button id="cancel-event-button" class="primary-button">Cancel event</button>
-			<!-- <form method="put">
-				<h3>Details</h3>
+			<form id="edit-details-form">
+				<h3>Edit details</h3>
+				<p>If people were invited to the event, they will be notified about the changes. If the place is changed, a new invite will be sent.</p>
 				<div class="label-and-input">
 					<label for="edit-details-name-input">Name</label>
 					<input id="edit-details-name-input"
@@ -38,18 +39,19 @@
 						type="text"></input>
 				</div>
 				<div>
-					<button id="reschule-form-reschedule-event-button"
+					<button id="edit-form-edit-button"
 						class="primary-button"
 						type="submit"
-						>Reschedule event</button>
-					<button id="reschule-form-cancel-reschedule-button"
+						>Edit</button>
+					<button id="edit-form-cancel-edit-button"
 						class="secondary-button"
 						type="button"
-						>Cancel reschedule</button>
+						>Cancel edit</button>
 				</div>
 			</form>
-			<form method="put">
-				<h3>Reschedule</h3>
+			<form id="reschedule-event-form">
+				<h3>Reschedule event</h3>
+				<p>If people were invited to the event, a new invite will be sent, with these new details.</p>
 				<div class="label-and-input">
 					<label for="reschedule-date-input">Date</label>
 					<input id="reschedule-date-input"
@@ -62,17 +64,23 @@
 						name="time"
 						type="time"></input>
 				</div>
+				<div class="label-and-input">
+					<label for="reschedule-place-input">Place</label>
+					<input id="reschedule-place-input"
+						name="place"
+						type="text"></input>
+				</div>
 				<div>
-					<button id="reschule-form-reschedule-event-button"
+					<button id="reschedule-form-reschedule-event-button"
 						class="primary-button"
 						type="submit"
 						>Reschedule event</button>
-					<button id="reschule-form-cancel-reschedule-button"
+					<button id="reschedule-form-cancel-reschedule-button"
 						class="secondary-button"
 						type="button"
 						>Cancel reschedule</button>
 				</div>
-			</form> -->
+			</form>
 			<div id="cancel-event-warning" class="warning">
 				<h3>Warning</h3>
 				<p>If you cancel the event, it will be deleted from your agenda. If people were invited to the event, they will be notified about the cancellation. Confirming the cancellation, you'll be redirected back to your agenda.</p>
