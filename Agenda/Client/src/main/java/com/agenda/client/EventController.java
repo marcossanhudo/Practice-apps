@@ -78,12 +78,14 @@ public class EventController {
 		produces = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
 	@ResponseBody
 	public String rescheduleEvent(@RequestParam("eventId") Long id,
-		@RequestParam("date") LocalDate date, @RequestParam("time") LocalTime time) {
+		@RequestParam("date") LocalDate date, @RequestParam("time") LocalTime time,
+		@RequestParam("place") String place) {
 		try {
 			Event event = eventRepository.findById(id);
 			return eventRepository.save(event
 				.date(date)
 				.time(time)
+				.place(place)
 			).toJSON().toString();
 		} catch (Exception e) {
 			throw e;
