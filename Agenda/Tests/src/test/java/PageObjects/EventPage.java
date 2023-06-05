@@ -12,6 +12,10 @@ public class EventPage {
 		this.driver = driver;
 	}
 	
+	public WebElement getYourAgendaLink() {
+		return this.driver.findElement(By.id("home-link"));
+	}
+	
 	public WebElement getTitleHeader() {
 		return this.driver.findElement(By.id("title-header"));
 	}
@@ -56,32 +60,44 @@ public class EventPage {
 		return this.driver.findElement(By.id("edit-details-description-input"));
 	}
 	
-	public WebElement getEditDetailsFormSaveEditButton() {
-		return this.driver.findElement(By.id("edit-details-form-save-edit-button"));
+	public WebElement getEditDetailsFormEditButton() {
+		return this.driver.findElement(By.id("edit-form-edit-button"));
 	}
 	
 	public WebElement getEditDetailsFormCancelEditButton() {
-		return this.driver.findElement(By.id("edit-details-form-cancel-edit-button"));
+		return this.driver.findElement(By.id("edit-form-cancel-edit-button"));
 	}
 
-	public WebElement getRescheduleFormDateInput() {
+	public WebElement getRescheduleEventFormDateInput() {
 		return this.driver.findElement(By.id("reschedule-date-input"));
 	}
 	
-	public WebElement getRescheduleFormTimeInput() {
+	public WebElement getRescheduleEventFormTimeInput() {
 		return this.driver.findElement(By.id("reschedule-time-input"));
 	}
 	
-	public WebElement getRescheduleFormPlaceInput() {
+	public WebElement getRescheduleEventFormPlaceInput() {
 		return this.driver.findElement(By.id("reschedule-place-input"));
 	}
 	
-	public WebElement getRescheduleFormReschuleEventButton() {
-		return this.driver.findElement(By.id("reschule-form-reschedule-event-button"));
+	public WebElement getRescheduleEventFormRescheduleEventButton() {
+		return this.driver.findElement(By.id("reschedule-form-reschedule-event-button"));
 	}
 	
-	public WebElement getRescheduleFormCancelRescheduleButton() {
-		return this.driver.findElement(By.id("reschule-form-cancel-reschedule-button"));
+	public WebElement getRescheduleEventFormCancelRescheduleButton() {
+		return this.driver.findElement(By.id("reschedule-form-cancel-reschedule-button"));
+	}
+	
+	public WebElement getCancelEventWarning() {
+		return this.driver.findElement(By.id("cancel-event-warning"));
+	}
+	
+	public WebElement getCancelEventWarningCancelEventButton() {
+		return this.driver.findElement(By.id("cancel-event-cancel-event-button"));
+	}
+	
+	public WebElement getCancelEventWarningDontCancelButton() {
+		return this.driver.findElement(By.id("cancel-event-dont-cancel-button"));
 	}
 	
 }

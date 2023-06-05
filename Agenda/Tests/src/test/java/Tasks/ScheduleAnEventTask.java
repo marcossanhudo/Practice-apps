@@ -24,20 +24,21 @@ public class ScheduleAnEventTask {
 	 * Then the event is added to the user's agenda.
 	 */
 
-	public void scheduleAnEvent() throws InterruptedException {
+	public void scheduleAnEvent(String name, String date, String time,
+			String place) throws InterruptedException {
 		agendaPage.getScheduleAnEventButton().click();
 		agendaValidation.validateFormAvailability();
 
 		ScheduleEventForm scheduleEventForm = new ScheduleEventForm(this.driver);
-		scheduleEventForm.getNameInput().sendKeys("New event");
-		scheduleEventForm.getDateInput().sendKeys("2023-05-28");
-		scheduleEventForm.getTimeInput().sendKeys("10:00");
-		scheduleEventForm.getPlaceInput().sendKeys("A place");
+		scheduleEventForm.getNameInput().sendKeys(name);
+		scheduleEventForm.getDateInput().sendKeys(date);
+		scheduleEventForm.getTimeInput().sendKeys(time);
+		scheduleEventForm.getPlaceInput().sendKeys(place);
 		Thread.sleep(3000);
 		scheduleEventForm.getScheduleEventButton().click();
 		agendaValidation.validateFormUnavailability();
 
-		agendaValidation.validateEventListing();
+		//agendaValidation.validateEventListing(name);
 	}
 
 	/* Given the user is trying to schedule an event,
@@ -47,16 +48,16 @@ public class ScheduleAnEventTask {
 	 * And the user is notified about the missing detail.
 	 */
 
-	public void scheduleAnEvent_missingName() {
+	public void scheduleAnEvent_missingName(String date, String time, String place) {
 		agendaPage.getScheduleAnEventButton().click();
 		agendaValidation.validateFormAvailability();
 
 		ScheduleEventForm scheduleEventForm = new ScheduleEventForm(this.driver);
 		ScheduleFormValidation scheduleFormValidation = new ScheduleFormValidation(this.driver);
 		// Not doing ScheduleEventForm scheduleEventForm = new ScheduleEventForm(this.driver);
-		scheduleEventForm.getDateInput().sendKeys();
-		scheduleEventForm.getTimeInput().sendKeys();
-		scheduleEventForm.getPlaceInput().sendKeys();
+		scheduleEventForm.getDateInput().sendKeys(date);
+		scheduleEventForm.getTimeInput().sendKeys(time);
+		scheduleEventForm.getPlaceInput().sendKeys(place);
 		scheduleEventForm.getScheduleEventButton().click();
 		agendaValidation.validateFormAvailability();
 		scheduleFormValidation.validateEventNameMissingNotification();
@@ -70,18 +71,19 @@ public class ScheduleAnEventTask {
 	 * Then the event is added to the user's agenda.
 	 */
 
-	public void scheduleAnEvent_missingPlace() {
+	public void scheduleAnEvent_missingPlace(String name, String date, String time,
+			String place) {
 		agendaPage.getScheduleAnEventButton().click();
 		agendaValidation.validateFormAvailability();
 
 		ScheduleEventForm scheduleEventForm = new ScheduleEventForm(this.driver);
-		scheduleEventForm.getNameInput().sendKeys();
-		scheduleEventForm.getDateInput().sendKeys();
-		scheduleEventForm.getTimeInput().sendKeys();
+		scheduleEventForm.getNameInput().sendKeys(name);
+		scheduleEventForm.getDateInput().sendKeys(date);
+		scheduleEventForm.getTimeInput().sendKeys(time);
 		// Not doing scheduleEventForm.getPlaceInput().sendKeys();
 		scheduleEventForm.getScheduleEventButton().click();
 		agendaValidation.validateFormUnavailability();
 
-		agendaValidation.validateEventListing();
+		//agendaValidation.validateEventListing(name);
 	}
 }

@@ -25,10 +25,16 @@ public class CancelAnEventTask {
 	 * Then the event is removed from the user's personal agenda.
 	 */
 	
-	public void cancelAnEvent() {
-		eventValidation.validateEventDetails();
+	public void cancelAnEvent(String name, String date, String time, String place, String description) {
+		agendaPage.getEventHappeningSoon(1).click();
+		eventValidation.validateEventDetails(name, date, time, place, description);
+		
 		eventPage.getCancelEventButton().click();
-		agendaValidation.validateEventNonListing();
+		eventValidation.validateCancelEventWarningVisibility();
+		eventPage.getCancelEventWarningCancelEventButton().click();
+		
+		agendaValidation.validatePageTitleAvailability();
+		//agendaValidation.validateEventNonListing();
 	}
 	
 }

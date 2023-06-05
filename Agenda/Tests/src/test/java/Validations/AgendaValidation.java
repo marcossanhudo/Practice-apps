@@ -20,17 +20,25 @@ public class AgendaValidation {
 		this.agendaPage = new AgendaPage(this.driver);
 	}
 	
+	public void validatePageTitleAvailability() {
+		WebElement title = wait.loadElement(agendaPage.getAgendaH1());
+		Assertions.assertTrue(title.isDisplayed());
+	}
+	
 	public void validateFormAvailability() {
 		WebElement form = wait.visibilityOfElement(By.id("schedule-an-event-form"));
 		Assertions.assertTrue(form.isDisplayed());
 	}
 	
 	public void validateFormUnavailability() {
-		WebElement form = wait.visibilityOfElement(By.id("schedule-an-event-form"));
-		Assertions.assertTrue(!form.isDisplayed());
+		try {
+			Assertions.assertTrue(!this.driver.findElement(By.id("schedule-an-event-form")).isDisplayed());
+		} catch (Exception e) {
+			throw e;
+		}
 	}
 	
-	public void validateEventListing() {
+	public void validateEventListing(String name) {
 		
 	}
 	
