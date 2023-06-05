@@ -7,7 +7,7 @@ import Validations.EventValidation;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class EditAnEventTask {
+public class EditAnEventsDetailsTask {
 	
 	private WebDriver driver;
 	private AgendaPage agendaPage;
@@ -15,7 +15,7 @@ public class EditAnEventTask {
 	private AgendaValidation agendaValidation;
 	private EventValidation eventValidation;
 	
-	public EditAnEventTask(WebDriver driver) { 
+	public EditAnEventsDetailsTask(WebDriver driver) { 
 		this.driver = driver;
 		this.agendaPage = new AgendaPage(this.driver);
 		this.eventPage = new EventPage(this.driver);
@@ -29,9 +29,9 @@ public class EditAnEventTask {
 	 * Then the new details are saved.
 	 */
 	
-	public void editAnEvent(String name, String date,
+	public void editAnEventsDetails(String name, String date,
 			String time, String place, String description,
-			String newName, String newPlace, String newDescription) {
+			String newName, String newDescription, String newPlace) throws InterruptedException {
 		//agendaValidation.validateEventListing(name);
 
 		agendaPage.getEventHappeningSoon(1).click();
@@ -39,13 +39,19 @@ public class EditAnEventTask {
 
 		eventPage.getEditDetailsButton().click();
 		eventValidation.validateEditDetailsFormPrefilling(name, description, place);
+		eventPage.getEditDetailsFormNameInput().clear();
 		eventPage.getEditDetailsFormNameInput().sendKeys(newName);
+		eventPage.getEditDetailsFormDescriptionInput().clear();
 		eventPage.getEditDetailsFormDescriptionInput().sendKeys(newDescription);
+		eventPage.getEditDetailsFormPlaceInput().clear();
 		eventPage.getEditDetailsFormPlaceInput().sendKeys(newPlace);
 		eventPage.getEditDetailsFormEditButton().click();
+		
+		Thread.sleep(300);
 		eventValidation.validateEventDetails(newName, date, time, newPlace, newDescription);
 		
 		eventPage.getYourAgendaLink().click();
+		agendaValidation.validatePageTitleAvailability();
 		//agendaValidation.validateEventListing(newName);
 	}
 }

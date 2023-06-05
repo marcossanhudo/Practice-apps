@@ -28,10 +28,16 @@ public class EventValidation {
 					eventDateTimeParagraph.getText());
 			WebElement eventPlaceParagraph = wait.loadElement(eventPage.getEventPlaceParagraph());
 			Assertions.assertEquals(
-					"At " + place + ".",
+					place.equals("")
+						? "No place provided."
+						: "At " + place + ".",
 					eventPlaceParagraph.getText());
 			WebElement eventDescriptionParagraph = wait.loadElement(eventPage.getEventDescriptionParagraph());
-			Assertions.assertEquals(description, eventDescriptionParagraph.getText());
+			Assertions.assertEquals(
+					description.equals("")
+						? "No description provided."
+						: description,
+					eventDescriptionParagraph.getText());
 		} catch (Exception e) {
 			throw e;
 		}

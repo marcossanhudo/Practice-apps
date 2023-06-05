@@ -32,7 +32,7 @@ public class RescheduleAnEventTest extends TestBase {
 					this.eventDate, this.eventTime, this.eventPlace);
 			Thread.sleep(300);
 			rescheduleAnEventTask.rescheduleAnEvent(this.eventName,
-					this.eventDate, this.eventTime, this.eventPlace, "No description provided.",
+					this.eventDate, this.eventTime, this.eventPlace, "",
 					this.eventNewDate, this.eventNewTime, this.eventNewPlace);
 		} catch (Exception e) {
 			throw e;

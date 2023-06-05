@@ -26,6 +26,7 @@ public class ScheduleAnEventTask {
 
 	public void scheduleAnEvent(String name, String date, String time,
 			String place) throws InterruptedException {
+		agendaValidation.validatePageTitleAvailability();
 		agendaPage.getScheduleAnEventButton().click();
 		agendaValidation.validateFormAvailability();
 

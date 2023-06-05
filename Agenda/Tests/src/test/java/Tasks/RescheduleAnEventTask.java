@@ -34,14 +34,18 @@ public class RescheduleAnEventTask {
 			String time, String place, String description,
 			String newDate, String newTime, String newPlace) throws InterruptedException {
 		//agendaValidation.validateEventListing(name);
-
+		
+		agendaValidation.validatePageTitleAvailability();
 		agendaPage.getEventHappeningSoon(1).click();
 		eventValidation.validateEventDetails(name, date, time, place, description);
 
 		eventPage.getRescheduleEventButton().click();
 		eventValidation.validateRescheduleEventFormPrefilling(date, time, place);
+		eventPage.getRescheduleEventFormDateInput().clear();
 		eventPage.getRescheduleEventFormDateInput().sendKeys(newDate);
+		eventPage.getRescheduleEventFormTimeInput().clear();
 		eventPage.getRescheduleEventFormTimeInput().sendKeys(newTime);
+		eventPage.getRescheduleEventFormPlaceInput().clear();
 		eventPage.getRescheduleEventFormPlaceInput().sendKeys(newPlace);
 		eventPage.getRescheduleEventFormRescheduleEventButton().click();
 		

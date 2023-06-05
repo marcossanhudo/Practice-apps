@@ -26,6 +26,7 @@ public class CancelAnEventTask {
 	 */
 	
 	public void cancelAnEvent(String name, String date, String time, String place, String description) {
+		agendaValidation.validatePageTitleAvailability();
 		agendaPage.getEventHappeningSoon(1).click();
 		eventValidation.validateEventDetails(name, date, time, place, description);
 		

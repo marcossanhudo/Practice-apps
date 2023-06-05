@@ -31,8 +31,9 @@ public class CancelAnEventTest extends TestBase {
 		try {
 			scheduleAnEventTask.scheduleAnEvent(this.eventName,
 					this.eventDate, this.eventTime, this.eventPlace);
+			Thread.sleep(300);
 			cancelAnEventTask.cancelAnEvent(this.eventName,
-					this.eventDate, this.eventTime, this.eventPlace, "No description provided.");
+					this.eventDate, this.eventTime, this.eventPlace, "");
 		} catch (Exception e) {
 			;
 		}
