@@ -1,0 +1,39 @@
+## Macro
+- With the app's current state, identify problems a user may have if he misunderstands the interface, or doesn't use the app correctly; write automated tests, and do manual tests. Some items to test:
+- - Invalid, or blank, inputs in input fields.
+- - Button prominence.
+
+--> The placement of the action confirmation button, and of the action cancellation button, in forms and warnings, might make them not visually prominent enough.
+--> If the user opens a form or warning by accident, it would be ideal that he didn't have to parse through the entire component, before finding the button to cancel the component's action.
+--> Input validation must be implemented, as well as indication of success and failure when receiving or submitting data.
+--> Communication and server errors must be communicated to the user.
+
+--> Agenda page {
+	- Issue of pre-existing events being rerendered everytime the user adds a new event, must be fixed.
+	- Using absolute dates for events happening later may make it harder for the user to grasp the time remaining before the event happens.
+	- "Manage invitees" might be confusing if the user has added no invitees yet.
+	- - Using "Invite people" for when the event has zero invitees, and "Manage invitees" when the event has more, is changing the interface, which may be confusing.
+	- Understanding what's "soon" or "later" may not be intuitive.
+	- There's no feedback for when the user succesfully creates an event; the user is required to find the event in the list, which may be even harder, if the user does not understand the distinction between "soon" and "later".
+}
+
+--> Event page {
+	- The link back to the homepage could be more visually prominent.
+	- Using "Event" as a level 1 heading may be confusing, since the user might be expecting to see the event's name as the identification of the page; the only way the user is currently able to access this page is through clicking on the event in the agenda page, which means the user already knows he clicked on the event, so he's already expecting to be directed to something specific of the event.
+	- The name "Edit" for the button that is meant to save the new details the user provided, can be a little confusing, since most other UI's will use that name for the button that starts the interaction, and then will use something like "Save" or "Save changes" for the confirmation of the edit.
+	- - Reusing the phrase "Edit details" may be better, since it can be interpreted as a reinforcement of the user's desire to make the edit.
+}
+
+- Accessibility testing.
+- Redesign app, according to findings according to the tests of the two previous items.
+- Implement invitee management for event scheduling.
+- Implement invitee management for event detail reviewing.
+- Specify the pending features in the specifications file.
+- Specify the routine feature, and the significant dates feature.
+
+## Micro
+- Review spacing rules, especially those of the event page.
+- For forms, warnings, and modals, implement ripple animations on item display.
+- On mouse hover stop, implement the reverse of the animation for mouse hover.
+- Organize styles: move what's global to the styleguide, move what's specific to the relevant page's stylesheet.
+- Consider a bigger margin in all pages, so content is more centered.

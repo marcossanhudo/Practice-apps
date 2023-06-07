@@ -131,22 +131,38 @@ function renderEventKeyDetailListing(event) {
 }
 
 async function sendScheduleAnEventRequest(event) {
-	requestBody =  "creatorId=" + userId +
-		"&" + "name=" + getById("schedule-form-name-input").value +
-		"&" + "date=" + getById("schedule-form-date-input").value +
-		"&" + "time=" + getById("schedule-form-time-input").value +
-		"&" + "place=" + getById("schedule-form-place-input").value
-	/*{
-		creatorId: userId,
-		name: getById("schedule-form-name-input").value,
-		date: getById("schedule-form-date-input").value,
-		time: getById("schedule-form-time-input").value,
-		place: getById("schedule-form-place-input").value
-	}*/
+	if (validateScheduleAnEventFormInputs()) {
+		requestBody =  "creatorId=" + userId +
+			"&" + "name=" + getById("schedule-form-name-input").value +
+			"&" + "date=" + getById("schedule-form-date-input").value +
+			"&" + "time=" + getById("schedule-form-time-input").value +
+			"&" + "place=" + getById("schedule-form-place-input").value
 
-	console.log(requestBody);
+		/*{
+			creatorId: userId,
+			name: getById("schedule-form-name-input").value,
+			date: getById("schedule-form-date-input").value,
+			time: getById("schedule-form-time-input").value,
+			place: getById("schedule-form-place-input").value
+		}*/
 
-	await fetch(/*endpoints.*/ scheduleEvent, { method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded" }, body: requestBody });
+		console.log(requestBody);
+
+		await fetch(/*endpoints.*/ scheduleEvent, { method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded" }, body: requestBody });
+	}
+}
+
+function validateScheduleAnEventFormInputs() {
+	valid = true;
+
+	if (!hasText(getById("schedule-form-name-input").value))
+		valid = false;
+	if (!hasText(getById("schedule-form-date-input").value))
+		valid = false;
+	if (!hasText(getById("schedule-form-time-input").value))
+		valid = false;
+
+	return valid;
 }
 
 function getRelativeName(date) {
@@ -181,6 +197,14 @@ function getFriendlyTimeHHMM(time) {
 		minutes = "0" + minutes;
 	
 	return hours + ":" + minutes + dayHalf;
+}
+
+function hasText(textElement) {
+	if (textElement !== null
+		&& textElement !== undefined
+		&& textElement !== "")
+		return true;
+	return false;
 }
 
 function getById(id) {
