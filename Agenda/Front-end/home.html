@@ -29,23 +29,37 @@
 				class="primary-button"
 				>Schedule an event</button>
 			<form id="schedule-an-event-form">
-				<h2>New event</h2>
+				<h2 style="display: inline-block;">New event</h2>
+					<button id="schedule-form-cancel-scheduling-button"
+						class="secondary-button"
+						style="display: inline-block;"
+						type="button"
+						>Cancel scheduling</button>
 				<div class="label-and-input">
-					<label for="schedule-form-name-input">Name</label>
+					<label for="schedule-form-name-input">
+						Name
+						<small class="complementary-information">Required information</small>
+					</label>
 					<input id="schedule-form-name-input"
 						name="name"
 						type="text"
 						required></input>
 				</div>
 				<div class="label-and-input">
-					<label for="schedule-form-date-input">Date</label>
+					<label for="schedule-form-date-input">
+						Date
+						<small class="complementary-information">Required information</small>
+					</label>
 					<input id="schedule-form-date-input"
 						name="date"
 						type="date"
 						required></input>
 				</div>
 				<div class="label-and-input">
-					<label for="schedule-form-time-input">Time</label>
+					<label for="schedule-form-time-input">
+						Time
+						<small class="complementary-information">Required information</small>
+					</label>
 					<input id="schedule-form-time-input"
 						name="time"
 						type="time"
@@ -60,9 +74,9 @@
 				<div class="label-and-input">
 					<label for="schedule-form-manage-invitees-button">Invitees</label>
 					<button id="schedule-form-manage-invitees-button"
-						class="primary-button"
+						class="secondary-button"
 						type="button"
-						>Manage invitees</button>
+						>Invite people</button> <!-- "Manage invitees" for when invitees >= 1 -->
 				</div>
 				<div>
 					<button id="schedule-form-schedule-event-button"
@@ -70,10 +84,6 @@
 						type="submit"
 						form="schedule-an-event-form"
 						>Schedule event</button>
-					<button id="schedule-form-cancel-scheduling-button"
-						class="secondary-button"
-						type="button"
-						>Cancel scheduling</button>
 				</div>
 			</form>
 			<div id="invitee-management-interface">

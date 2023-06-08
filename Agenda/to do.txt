@@ -1,7 +1,7 @@
 ## Macro
 - With the app's current state, identify problems a user may have if he misunderstands the interface, or doesn't use the app correctly; write automated tests, and do manual tests. Some items to test:
 - - Invalid, or blank, inputs in input fields.
-- - Button prominence.
+- - Visual prominence of buttons.
 
 --> The placement of the action confirmation button, and of the action cancellation button, in forms and warnings, might make them not visually prominent enough.
 --> If the user opens a form or warning by accident, it would be ideal that he didn't have to parse through the entire component, before finding the button to cancel the component's action.
@@ -9,6 +9,7 @@
 --> Communication and server errors must be communicated to the user.
 
 --> Agenda page {
+	- Events are not scheduled when only empty inputs are provided, but there's no feedback about how there are fields which are required.
 	- Issue of pre-existing events being rerendered everytime the user adds a new event, must be fixed.
 	- Using absolute dates for events happening later may make it harder for the user to grasp the time remaining before the event happens.
 	- "Manage invitees" might be confusing if the user has added no invitees yet.
@@ -19,14 +20,31 @@
 
 --> Event page {
 	- The link back to the homepage could be more visually prominent.
+	- When event details are changed, and the user provides empty inputs, the inputs are accepted.
 	- Using "Event" as a level 1 heading may be confusing, since the user might be expecting to see the event's name as the identification of the page; the only way the user is currently able to access this page is through clicking on the event in the agenda page, which means the user already knows he clicked on the event, so he's already expecting to be directed to something specific of the event.
 	- The name "Edit" for the button that is meant to save the new details the user provided, can be a little confusing, since most other UI's will use that name for the button that starts the interaction, and then will use something like "Save" or "Save changes" for the confirmation of the edit.
 	- - Reusing the phrase "Edit details" may be better, since it can be interpreted as a reinforcement of the user's desire to make the edit.
+	- When the user edits the place of the event in either event detail change form, the change is not reflect in the other form, which is to say that, when the user changes event details, the changes are not reflected in the whole of the page.
+	- It may be bad to use primary buttons for the "edit details", "reschedule event", and "cancel event" actions, since users shouldn't necessarily be encouraged to take these actions.
 }
 
 - Accessibility testing.
+
+--> Visual deficiencies (namely: blindness; color blindness) {
+	- Forms, and list elements that represent events, are not identified as such, when the user is using a screen reader, and cannot see the element borders.
+	- Context changes (such as forms and warnings opening and closing) are not narrated by screen readers.
+	- Warnings, when the user is using a screen reader, and cannot see the element borders, are only identified by the "Warning" heading; they're thus (probably) not programatically identifiable. 
+	- Users who cannot see tones of blue (as happens for people with tritanopia) may have difficulty seeing elements identified by the color, especially on low screen brightnesses.
+	- Users who cannot see any color (except grayscale colors) (as happens for people with achromatopsia) may have difficulty seeing elements identified by non-grayscale colors, especially on low screen brightnesses.
+	- Users whose vision is less sensitive to color contrast, may have difficulty seeing elements at all, especially on low screen brightnesses.
+	- List items that represent events in the homepage may be difficult to identify, when the user is not hovering over them, even for people without visual deficiencies, because of how little contrast there is between the item, and the background of the page.
+}
+
+--> The app uses written English to communicate information, which means it is inaccessible to people who don't know written English (be it because of social or economic reasons, or because of difficulties to learn), and it may be inaccessible to people who have dyslexia.
+
 - Redesign app, according to findings according to the tests of the two previous items.
 - Implement invitee management for event scheduling.
+- Implement invitee management for event rescheduling.
 - Implement invitee management for event detail reviewing.
 - Specify the pending features in the specifications file.
 - Specify the routine feature, and the significant dates feature.

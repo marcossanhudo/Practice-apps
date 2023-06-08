@@ -2,6 +2,11 @@ ol, ul {
 	padding: 0em;
 }
 
+input[type="date"],
+input[type="time"] {
+	cursor: text;
+}
+
 #schedule-an-event-form input,
 #invitee-management-interface input,
 #invitee-search-results {
@@ -30,6 +35,10 @@ button {
 	padding: 0em 1.5em;
 }
 
+.complementary-information {
+	display: block;
+}
+
 #schedule-an-event-form label,
 #invitee-management-interface label {
 	display: inline-block;
@@ -37,6 +46,7 @@ button {
 	font-size: 1em;
 	font-weight: 600;
 	margin-bottom: 0.55em;
+	vertical-align: middle;
 }
 
 #schedule-an-event-form input,
@@ -83,6 +93,26 @@ li {
 #invitee-search-results li * {
 	display: inline-block;
 	min-width: 15ch;
+}
+
+.secondary-button:hover {
+	animation: fill-accent-color 0.100s forwards,
+		accent-element-come-closer 0.300s forwards;
+}
+
+@keyframes fill-accent-color {
+	100% {
+		background-color: var(--accent-color);
+	}
+}
+
+form .primary-button {
+	min-width: 200px;
+}
+
+#schedule-form-cancel-scheduling-button {
+	border: none;
+	margin-left: calc(50% - 2em);
 }
 
 .event-all-details:hover,
