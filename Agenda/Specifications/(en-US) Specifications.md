@@ -5,6 +5,8 @@ A simple app that allows users to create events for their personal agendas, and 
 
 ## General features
 The user should be able to ...
+- review the events in his personal agenda.
+- review the details of specific events in his personal agenda.
 - add an event to his personal agenda.
 - edit the details of an event in his personal agenda.
 - reschedule an event in his personal agenda.
@@ -19,6 +21,8 @@ When a user is invited to an event, the user should be able to ...
 - accept the invitation (always notifies the inviting user).
 - "assertively" decline the invitation (decline and notify the inviting user).
 - "discretly" decline the invitation (decline and not notify the inviting user).
+
+If the user starts to use a feature, and then changes his mind, a way to cancel the interaction should be prominent and accessible as soon as possible.
 
 ## Feature decision tree
 ```
