@@ -15,17 +15,52 @@ public class ScheduleAnEventTest extends TestBase {
 	private String eventTime = FileOperation.getProperties("event").getProperty("time");
 	private String eventPlace = FileOperation.getProperties("event").getProperty("place");
 
-	/* Given the user has scheduled an event,
-	 * Then the event should appear in the user's agenda.
+	/* Given the user has provided all required information to create an event,
+	 * And also has provided optional information,
+	 * When the user confirms that he wants to schedule the event,
+	 * Then the event should appear in the user's agenda,
+	 * And the user should be notified of the success in scheduling the event.
 	 */
 
 	@Test
-	public void scheduleEvent() {
+	public void scheduleEvent() throws Exception {
 		try {
 			scheduleAnEventTask.scheduleAnEvent(this.eventName,
 					this.eventDate, this.eventTime, this.eventPlace);
 		} catch (Exception e) {
-			;
+			throw e;
+		}
+	}
+	
+	/* Given the user has not provided all required information to create an event,
+	 * And even if he has provided optional information,
+	 * When the user confirms that he wants to schedule the event,
+	 * Then the event should not appear in the user's agenda,
+	 * And the user should be notified about the missing information.
+	 */
+	
+	@Test
+	public void scheduleEvent_missingRequiredInfo() {
+		try {
+			scheduleAnEventTask.scheduleAnEvent_missingName(eventDate, eventTime, eventPlace);
+		} catch (Exception e) {
+			throw e;
+		}
+	}
+	
+	/* Given the user has provided all required information to create an event,
+	 * But has not provided any optional information,
+	 * When the user confirms that he wants to schedule the event,
+	 * Then the event should appear in the user's agenda,
+	 * And the user should be notified of the success in scheduling the event.
+	 */
+	
+	@Test
+	public void scheduleEvent_missingOptionalInfo() throws Exception {
+		try {
+			scheduleAnEventTask.scheduleAnEvent_missingPlace(eventName, eventDate, eventTime);
+		} catch (Exception e) {
+			throw e;
 		}
 	}
 	

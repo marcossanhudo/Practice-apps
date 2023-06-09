@@ -72,8 +72,7 @@ public class ScheduleAnEventTask {
 	 * Then the event is added to the user's agenda.
 	 */
 
-	public void scheduleAnEvent_missingPlace(String name, String date, String time,
-			String place) {
+	public void scheduleAnEvent_missingPlace(String name, String date, String time) throws InterruptedException {
 		agendaPage.getScheduleAnEventButton().click();
 		agendaValidation.validateFormAvailability();
 
@@ -83,6 +82,7 @@ public class ScheduleAnEventTask {
 		scheduleEventForm.getTimeInput().sendKeys(time);
 		// Not doing scheduleEventForm.getPlaceInput().sendKeys();
 		scheduleEventForm.getScheduleEventButton().click();
+		Thread.sleep(3000);
 		agendaValidation.validateFormUnavailability();
 
 		//agendaValidation.validateEventListing(name);
