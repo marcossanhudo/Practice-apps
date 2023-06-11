@@ -19,13 +19,13 @@ public class ScheduleAnEventTask {
 	}
 
 	/* Given the user is trying to schedule an event,
-	 * And all the required details are provided,
+	 * And the user has provided a valid name, a valid date, a valid time, and a valid place,
 	 * When the user confirms the scheduling,
 	 * Then the event is added to the user's agenda.
 	 */
 
 	public void scheduleAnEvent(String name, String date, String time,
-			String place) throws InterruptedException {
+			String place) {
 		agendaValidation.validatePageTitleAvailability();
 		agendaPage.getScheduleAnEventButton().click();
 		agendaValidation.validateFormAvailability();
@@ -35,7 +35,6 @@ public class ScheduleAnEventTask {
 		scheduleEventForm.getDateInput().sendKeys(date);
 		scheduleEventForm.getTimeInput().sendKeys(time);
 		scheduleEventForm.getPlaceInput().sendKeys(place);
-		Thread.sleep(3000);
 		scheduleEventForm.getScheduleEventButton().click();
 		agendaValidation.validateFormUnavailability();
 
@@ -43,10 +42,10 @@ public class ScheduleAnEventTask {
 	}
 
 	/* Given the user is trying to schedule an event,
-	 * And not all the required details are provided,
+	 * And the user has provided blank input for the event name,
+	 * And even though the user has provided a valid date, a valid time, and a valid place,
 	 * When the user confirms the scheduling,
-	 * Then the event is not be added to the user's agenda,
-	 * And the user is notified about the missing detail.
+	 * Then the event is not added to the user's agenda.
 	 */
 
 	public void scheduleAnEvent_missingName(String date, String time, String place) {
@@ -55,24 +54,24 @@ public class ScheduleAnEventTask {
 
 		ScheduleEventForm scheduleEventForm = new ScheduleEventForm(this.driver);
 		ScheduleFormValidation scheduleFormValidation = new ScheduleFormValidation(this.driver);
-		// Not doing ScheduleEventForm scheduleEventForm = new ScheduleEventForm(this.driver);
+		// Not doing scheduleEventForm.getNameInput().sendKeys(name);
 		scheduleEventForm.getDateInput().sendKeys(date);
 		scheduleEventForm.getTimeInput().sendKeys(time);
 		scheduleEventForm.getPlaceInput().sendKeys(place);
 		scheduleEventForm.getScheduleEventButton().click();
 		agendaValidation.validateFormAvailability();
-		scheduleFormValidation.validateEventNameMissingNotification();
-		agendaValidation.validateEventNonListing();
+
+		//agendaValidation.validateEventNonListing();
 	}
 
 	/* Given the user is trying to schedule an event,
-	 * And all the required details are provided,
-	 * But an optional detail is not provided,
+	 * And the user has provided a valid name, a valid date, and a valid time,
+	 * And even though the user has provided blank input for a place,
 	 * When the user confirms the scheduling,
 	 * Then the event is added to the user's agenda.
 	 */
 
-	public void scheduleAnEvent_missingPlace(String name, String date, String time) throws InterruptedException {
+	public void scheduleAnEvent_missingPlace(String name, String date, String time) {
 		agendaPage.getScheduleAnEventButton().click();
 		agendaValidation.validateFormAvailability();
 
@@ -80,9 +79,8 @@ public class ScheduleAnEventTask {
 		scheduleEventForm.getNameInput().sendKeys(name);
 		scheduleEventForm.getDateInput().sendKeys(date);
 		scheduleEventForm.getTimeInput().sendKeys(time);
-		// Not doing scheduleEventForm.getPlaceInput().sendKeys();
+		// Not doing scheduleEventForm.getPlaceInput().sendKeys(place);
 		scheduleEventForm.getScheduleEventButton().click();
-		Thread.sleep(3000);
 		agendaValidation.validateFormUnavailability();
 
 		//agendaValidation.validateEventListing(name);

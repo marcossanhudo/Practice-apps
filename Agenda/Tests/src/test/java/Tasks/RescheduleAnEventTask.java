@@ -25,8 +25,8 @@ public class RescheduleAnEventTask {
 	}
 
 	/* Given the user is trying to reschedule an event,
+	 * And has provided a valid date, a valid time, and a valid place,
 	 * When the user confirms the reschedule,
-	 * And the new date, time, and place, are valid,
 	 * Then the event is edited in the user's agenda, with the new date, time, and place.
 	 */
 
@@ -40,6 +40,7 @@ public class RescheduleAnEventTask {
 		eventValidation.validateEventDetails(name, date, time, place, description);
 
 		eventPage.getRescheduleEventButton().click();
+		eventValidation.validateRescheduleEventFormAvailability();
 		eventValidation.validateRescheduleEventFormPrefilling(date, time, place);
 		eventPage.getRescheduleEventFormDateInput().clear();
 		eventPage.getRescheduleEventFormDateInput().sendKeys(newDate);
@@ -58,9 +59,10 @@ public class RescheduleAnEventTask {
 	}
 
 	/* Given the user is trying to reschedule an event,
+	 * And the user has provided blank input for a date,	// or blank input for a time
+	 * And even though the user has provided a valid time, and a valid place,
 	 * When the user confirms the reschedule,
-	 * And the new date, time, and place, are valid,
-	 * Then the event is edited in the user's agenda, with the new date, time, and place.
+	 * Then the event is not be rescheduled.
 	 */
 
 	public void rescheduleAnEvent_missingDate(String name,
@@ -73,9 +75,9 @@ public class RescheduleAnEventTask {
 		eventValidation.validateEventDetails(name, date, time, place, description);
 
 		eventPage.getRescheduleEventButton().click();
+		eventValidation.validateRescheduleEventFormAvailability();
 		eventValidation.validateRescheduleEventFormPrefilling(date, time, place);
 		eventPage.getRescheduleEventFormDateInput().clear();
-		eventPage.getRescheduleEventFormDateInput().sendKeys("");
 		eventPage.getRescheduleEventFormTimeInput().clear();
 		eventPage.getRescheduleEventFormTimeInput().sendKeys(newTime);
 		eventPage.getRescheduleEventFormPlaceInput().clear();
@@ -83,7 +85,8 @@ public class RescheduleAnEventTask {
 		eventPage.getRescheduleEventFormRescheduleEventButton().click();
 		
 		Thread.sleep(300);
-		// ...
+		eventValidation.validateRescheduleEventFormAvailability();
+		eventValidation.validateEventDetails(name, date, time, place, description);
 		
 		eventPage.getYourAgendaLink().click();
 		agendaValidation.validatePageTitleAvailability();
@@ -91,9 +94,11 @@ public class RescheduleAnEventTask {
 	}
 	
 	/* Given the user is trying to reschedule an event,
+	 * And the user has provided a valid date, and a valid time,
+	 * And even though the user has provided blank input for a place,
 	 * When the user confirms the reschedule,
-	 * And the new date, time, and place, are valid,
-	 * Then the event is edited in the user's agenda, with the new date, time, and place.
+	 * Then the event is edited in the user's agenda, with the provided date and time,
+	 * And the place information is empty.
 	 */
 
 	public void rescheduleAnEvent_missingPlace(String name, String date,
@@ -106,13 +111,13 @@ public class RescheduleAnEventTask {
 		eventValidation.validateEventDetails(name, date, time, place, description);
 
 		eventPage.getRescheduleEventButton().click();
+		eventValidation.validateRescheduleEventFormAvailability();
 		eventValidation.validateRescheduleEventFormPrefilling(date, time, place);
 		eventPage.getRescheduleEventFormDateInput().clear();
 		eventPage.getRescheduleEventFormDateInput().sendKeys(newDate);
 		eventPage.getRescheduleEventFormTimeInput().clear();
 		eventPage.getRescheduleEventFormTimeInput().sendKeys(newTime);
 		eventPage.getRescheduleEventFormPlaceInput().clear();
-		eventPage.getRescheduleEventFormPlaceInput().sendKeys("");
 		eventPage.getRescheduleEventFormRescheduleEventButton().click();
 		
 		Thread.sleep(300);

@@ -21,12 +21,12 @@ public class RescheduleAnEventTest extends TestBase {
 	private String eventNewTime = FileOperation.getProperties("event").getProperty("newTime");
 	private String eventNewPlace = FileOperation.getProperties("event").getProperty("newPlace");
 
-	/* Given the user has is trying to reschedule an event,
+	/* Given the user is trying to reschedule an event,
 	 * And he has provided all of the required information,
 	 * And he has also provided optional information,
-	 * Then the event should appear in the user's agenda, under a new date,
-	 * And the event's details in the event page should be updated,
-	 * And the user should be notified of success in rescheduling the event.
+	 * When the user confirms the reschedule,
+	 * Then the event is moved to a new date or time, in the user's personal agenda,
+	 * And the event's details in the event page are updated.
 	 */
 
 	@Test
@@ -43,11 +43,11 @@ public class RescheduleAnEventTest extends TestBase {
 		}
 	}
 	
-	/* Given the user has is trying to reschedule an event,
+	/* Given the user is trying to reschedule an event,
 	 * And he has not provided all of the required information,
-	 * And even if he has also provided optional information,
-	 * Then the event should not be rescheduled,
-	 * And the user should be notified of the missing required information.
+	 * And even if he has provided optional information,
+	 * Wehn the user confirms the reschedule,
+	 * Then the event is not rescheduled.
 	 */
 	
 	@Test
@@ -64,12 +64,12 @@ public class RescheduleAnEventTest extends TestBase {
 		}
 	}
 	
-	/* Given the user has is trying to reschedule an event,
+	/* Given the user is trying to reschedule an event,
 	 * And he has provided all of the required information,
 	 * And even if he has not provided optional information,
-	 * Then the still event should appear in the user's agenda, under a new date,
-	 * And the event's details in the event page should be updated,
-	 * And the user should be notified of success in rescheduling the event.
+	 * When the user confirms the reschedule,
+	 * Then the event is moved to a new date or time, in the user's personal agenda,
+	 * And the event's details in the event page are updated.
 	 */
 	
 	@Test

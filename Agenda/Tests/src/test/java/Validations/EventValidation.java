@@ -1,6 +1,8 @@
 package Validations;
 
 import PageObjects.*;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import Framework.Browser.Waits;
@@ -43,10 +45,19 @@ public class EventValidation {
 		}
 	}
 	
-	public void validateCancelEventWarningVisibility() {
+	public void validateCancelEventWarningAvailability() {
 		try {
 			WebElement cancelEventWarning = wait.loadElement(eventPage.getCancelEventWarning());
 			Assertions.assertTrue(cancelEventWarning.isDisplayed());
+		} catch (Exception e) {
+			throw e;
+		}
+	}
+	
+	public void validateEditDetailsFormAvailability() {
+		try {
+			WebElement editDetailsForm = wait.visibilityOfElement(By.id("edit-details-form"));
+			Assertions.assertTrue(editDetailsForm.isDisplayed());
 		} catch (Exception e) {
 			throw e;
 		}
@@ -60,6 +71,15 @@ public class EventValidation {
 			Assertions.assertEquals(description, descriptionInput.getAttribute("value"));
 			WebElement placeInput = wait.loadElement(eventPage.getEditDetailsFormPlaceInput());
 			Assertions.assertEquals(place, placeInput.getAttribute("value"));
+		} catch (Exception e) {
+			throw e;
+		}
+	}
+	
+	public void validateRescheduleEventFormAvailability() {
+		try {
+			WebElement rescheduleEventForm = wait.visibilityOfElement(By.id("reschedule-event-form"));
+			Assertions.assertTrue(rescheduleEventForm.isDisplayed());
 		} catch (Exception e) {
 			throw e;
 		}

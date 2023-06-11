@@ -5,7 +5,7 @@
 
 --> The placement of the action confirmation button, and of the action cancellation button, in forms and warnings, might make them not visually prominent enough.
 --> If the user opens a form or warning by accident, it would be ideal that he didn't have to parse through the entire component, before finding the button to cancel the component's action.
---> Input validation must be implemented, as well as indication of success and failure when receiving or submitting data.
+--> Input validation, and invalid input refusal, must be implemented, as well as indication of success and failure when receiving or submitting data.
 --> Communication and server errors must be communicated to the user.
 
 --> Agenda page {

@@ -21,7 +21,8 @@ public class CancelAnEventTask {
 		this.agendaValidation = new AgendaValidation(this.driver);
 	}
 	
-	/* When the user tries to cancel an event in his personal agenda,
+	/* Given the user is trying to cancel an event in his personal agenda,
+	 * When the user confirms the cancellation,
 	 * Then the event is removed from the user's personal agenda.
 	 */
 	
@@ -31,7 +32,7 @@ public class CancelAnEventTask {
 		eventValidation.validateEventDetails(name, date, time, place, description);
 		
 		eventPage.getCancelEventButton().click();
-		eventValidation.validateCancelEventWarningVisibility();
+		eventValidation.validateCancelEventWarningAvailability();
 		eventPage.getCancelEventWarningCancelEventButton().click();
 		
 		agendaValidation.validatePageTitleAvailability();
