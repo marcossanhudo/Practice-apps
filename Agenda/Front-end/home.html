@@ -28,42 +28,39 @@
 			<button id="schedule-an-event-button"
 				class="primary-button"
 				>Schedule an event</button>
+			<!-- <div>
+				<button id="schedule-an-event-button"
+					class="primary-button"
+					>Schedule an event</button>
+				<div id="alert-space" class="alert-space" aria-live="polite">
+					<p>Success in scheduling event.</p>
+				</div>
+			</div> -->
 			<form id="schedule-an-event-form">
-				<h2 style="display: inline-block;">New event</h2>
+				<div class="inpage-interface-heading">
+					<h2>New event</h2>
 					<button id="schedule-form-cancel-scheduling-button"
 						class="secondary-button"
-						style="display: inline-block;"
 						type="button"
 						>Cancel scheduling</button>
+				</div>
 				<div class="label-and-input">
-					<label for="schedule-form-name-input">
-						Name
-						<small class="complementary-information">Required information</small>
-					</label>
+					<label for="schedule-form-name-input">Name</label>
 					<input id="schedule-form-name-input"
 						name="name"
-						type="text"
-						required></input>
+						type="text"></input>
 				</div>
 				<div class="label-and-input">
-					<label for="schedule-form-date-input">
-						Date
-						<small class="complementary-information">Required information</small>
-					</label>
+					<label for="schedule-form-date-input">Date</label>
 					<input id="schedule-form-date-input"
 						name="date"
-						type="date"
-						required></input>
+						type="date"></input>
 				</div>
 				<div class="label-and-input">
-					<label for="schedule-form-time-input">
-						Time
-						<small class="complementary-information">Required information</small>
-					</label>
+					<label for="schedule-form-time-input">Time</label>
 					<input id="schedule-form-time-input"
 						name="time"
-						type="time"
-						required></input>
+						type="time"></input>
 				</div>
 				<div class="label-and-input">
 					<label for="schedule-form-place-input">Place</label>
@@ -74,9 +71,9 @@
 				<div class="label-and-input">
 					<label for="schedule-form-manage-invitees-button">Invitees</label>
 					<button id="schedule-form-manage-invitees-button"
-						class="secondary-button"
+						class="primary-button"
 						type="button"
-						>Invite people</button> <!-- "Manage invitees" for when invitees >= 1 -->
+						>Manage invitees</button>
 				</div>
 				<div>
 					<button id="schedule-form-schedule-event-button"

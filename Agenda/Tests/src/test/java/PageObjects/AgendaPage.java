@@ -58,7 +58,7 @@ public class AgendaPage {
 	}
 	
 	public List<WebElement> getEventsHappeningLater() {
-		return driver.findElements(By.xpath("//ol[id@='events-happening-later']/li"));
+		return driver.findElements(By.xpath("//ol[@id='events-happening-later']/li"));
 	}
 	
 	public LocalDate parseDate(String date) {

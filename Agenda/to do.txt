@@ -3,10 +3,13 @@
 - - Invalid, or blank, inputs in input fields.
 - - Visual prominence of buttons.
 
---> The placement of the action confirmation button, and of the action cancellation button, in forms and warnings, might make them not visually prominent enough.
+--> The placement of the action confirmation button, and of the action cancellation button, in forms and warnings, might make the buttons not visually prominent enough.
 --> If the user opens a form or warning by accident, it would be ideal that he didn't have to parse through the entire component, before finding the button to cancel the component's action.
 --> Input validation, and invalid input refusal, must be implemented, as well as indication of success and failure when receiving or submitting data.
 --> Communication and server errors must be communicated to the user.
+--> Events are not reordered to chronological order.
+--> Tabbing to items does not have the same effect on item presentation, as does hovering on them.
+--> Input fields can be confused with buttons, and vice versa, because of how they're visually presented in the same way.
 
 --> Agenda page {
 	- Depending on screen height, having the invites section always present may make the user's events not visually prominent enough; however, it might be good to have the section always present, even when the user has no pending invites, as the user then has no reason to wonder about if he has any pending invites.
@@ -20,12 +23,12 @@
 }
 
 --> Event page {
-	- The link back to the homepage could be more visually prominent.
-	- When event details are changed, and the user provides empty inputs, the inputs are accepted.
-	- Using "Event" as a level 1 heading may be confusing, since the user might be expecting to see the event's name as the identification of the page; the only way the user is currently able to access this page is through clicking on the event in the agenda page, which means the user already knows he clicked on the event, so he's already expecting to be directed to something specific of the event.
-	- The name "Edit" for the button that is meant to save the new details the user provided, can be a little confusing, since most other UI's will use that name for the button that starts the interaction, and then will use something like "Save" or "Save changes" for the confirmation of the edit.
+	- [DONE] The link back to the homepage could be more visually prominent.
+	- When event details are changed, and the user provides empty inputs, the inputs are accepted, even when they're required to be non-empty.
+	- [DONE] Using "Event" as a level 1 heading may be confusing, since the user might be expecting to see the event's name as the identification of the page; the only way the user is currently able to access this page is through clicking on the event in the agenda page, which means the user already knows he clicked on the event, so he's already expecting to be directed to something specific of the event.
+	- [DONE] The name "Edit" for the button that is meant to save the new details the user provided, can be a little confusing, since most other UI's will use that name for the button that starts the interaction, and then will use something like "Save" or "Save changes" for the confirmation of the edit.
 		- Reusing the phrase "Edit details" may be better, since it can be interpreted as a reinforcement of the user's desire to make the edit.
-	- When the user edits the place of the event in either event detail change form, the change is not reflect in the other form, which is to say that, when the user changes event details, the changes are not reflected in the whole of the page.
+	- [DONE] When the user edits the place of the event in either event detail change form, the change is not reflect in the other form, which is to say that, when the user changes event details, the changes are not reflected in the whole of the page.
 	- It may be bad to use primary buttons for the "edit details", "reschedule event", and "cancel event" actions, since users shouldn't necessarily be encouraged to take these actions.
 	- It's ugly how the user has to either submit a place name starting with a lower case letter, or have the two first words of the place paragraph have capital initials.
 	- The user is meant to be able to add extensive descriptions, such as lists of things; however, the input field for descriptions is tiny.
@@ -37,7 +40,7 @@
 --> Visual deficiencies (namely: blindness; color blindness) {
 	- Forms, and list elements that represent events, are not identified as such, when the user is using a screen reader, and cannot see the element borders.
 	- Context changes (such as forms and warnings opening and closing) are not narrated by screen readers. On clicking buttons, a user who cannot see, and uses a screen reader, may be left clueless as to what the button, which opened or close the form or warning, did, especially if the user is new to the app.
-	- Since context changes aren't making screen reading cursors move to the new context, moving to an opened form or warning is confusing, if the button which opened the form or warning had buttons or links after it, but before the opened element.
+	- [DONE] Since context changes aren't making screen reading cursors move to the new context, moving to an opened form or warning is confusing, if the button which opened the form or warning had buttons or links after it, but before the opened element.
 	- Having the cancel action button be at the end of its form or warning, may be good, since it forces the user to check that the element is not what is desired; that check, however, may become frustrating, if the user is already familiar with the app.
 	- Issues with specific screen readers: {
 		- When Windows Narrator reads dates from date input fields, or times from time input fields, it reads them character by character

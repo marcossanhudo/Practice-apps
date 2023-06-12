@@ -27,7 +27,7 @@ public class CancelAnEventTest extends TestBase {
 	 */
 	
 	@Test
-	public void cancelAnEvent() {
+	public void cancelAnEvent() throws Exception {
 		try {
 			scheduleAnEventTask.scheduleAnEvent(this.eventName,
 					this.eventDate, this.eventTime, this.eventPlace);
@@ -35,7 +35,7 @@ public class CancelAnEventTest extends TestBase {
 			cancelAnEventTask.cancelAnEvent(this.eventName,
 					this.eventDate, this.eventTime, this.eventPlace, "");
 		} catch (Exception e) {
-			;
+			throw e;
 		}
 	}
 	

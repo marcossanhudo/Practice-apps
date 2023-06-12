@@ -28,6 +28,8 @@ public class CancelAnEventTask {
 	
 	public void cancelAnEvent(String name, String date, String time, String place, String description) {
 		agendaValidation.validatePageTitleAvailability();
+		agendaValidation.validateEventListing(name);
+		
 		agendaPage.getEventHappeningSoon(1).click();
 		eventValidation.validateEventDetails(name, date, time, place, description);
 		
@@ -36,7 +38,7 @@ public class CancelAnEventTask {
 		eventPage.getCancelEventWarningCancelEventButton().click();
 		
 		agendaValidation.validatePageTitleAvailability();
-		//agendaValidation.validateEventNonListing();
+		agendaValidation.validateEventNonListing(name);
 	}
 	
 }

@@ -7,16 +7,17 @@
 		<meta charset="UTF-8">
 	</head>
 	<body>
-		<a id="home-link" href="home.html">Your agenda</a>
-		<h1 id="title-header">Event</h1>
-		<h2 id="event-name-header">Event name</h2>
+		<a id="home-link" href="home.html">Back to your agenda</a>
+		<h1 id="event-name-header">Event name</h1>
 		<section aria-labelledby="">
 			<p id="event-datetime-paragraph">Weekday, 1 Month, at 00:00 XM.</p>
 			<p id="event-place-paragraph">At place name.</p>
 			<p id="event-description-paragraph">Event description so that the people involved don't forget important details about the event.</p>
-			<button id="edit-details-button" class="primary-button">Edit details</button>
-			<button id="reschedule-event-button" class="primary-button">Reschedule event</button>
-			<button id="cancel-event-button" class="primary-button">Cancel event</button>
+			<div id="event-main-actions">
+				<button id="edit-details-button" class="primary-button">Edit details</button>
+				<button id="reschedule-event-button" class="primary-button">Reschedule event</button>
+				<button id="cancel-event-button" class="primary-button">Cancel event</button>
+			</div>
 			<form id="edit-details-form">
 				<h3>Edit details</h3>
 				<p>If people were invited to the event, they will be notified about the changes. If the place is changed, a new invite will be sent.</p>
@@ -42,7 +43,7 @@
 					<button id="edit-form-edit-button"
 						class="primary-button"
 						type="submit"
-						>Edit</button>
+						>Edit details</button>
 					<button id="edit-form-cancel-edit-button"
 						class="secondary-button"
 						type="button"

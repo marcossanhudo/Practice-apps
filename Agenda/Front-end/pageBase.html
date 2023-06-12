@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en-US">
+	<head>
+		<title>Page title</title>
+		<link rel="stylesheet" href="styleguide.css">
+		<meta charset="UTF-8">
+	</head>
+	<body>
+		<nav><a>Back to previous page</a></nav>
+		<h1 id="title-header">Page title</h1>
+		<section id="introduction-section"
+			aria-labelledby="introduction-section-header">
+			<h2 id="introduction-section-header">About this</h2>
+			<p>This file is meant to serve as a base, on which other pages for the app will be built. It shows how things should be sized, colored, and laid out.</p>
+			<p>This section is an example of a section which just has paragraphs.</p>
+		</section>
+		<section id="controls-section">
+			<h2>Controls</h2>
+			<p>Besides paragraphs, sections may also be used to organize user input controls.</p>
+			<p>User input controls, such as buttons, and text input fields, should be children of a common object, so controlling user input control availability becomes easier.</p>
+			<p>When a control, such as a button, triggers a new widget, such as a form, to be opened in the same region of the same page, the triggering control becomes unavailable, and the triggered control provides a button to revert the situation. Triggering a control is a change of context.</p>
+			<div>
+				<button class="primary-button">Open a form</button>
+				<button class="primary-button">Trigger a warning</button>
+			</div>
+			<form>
+				<div>
+					<label>Label</label>
+					<input></input>
+				</div>
+				<div>
+					<label>Label</label>
+					<input></input>
+				</div>
+			</form>
+			<div class="warning">
+			</div>
+		</section>
+	</body>
+</html>
